@@ -1,0 +1,18 @@
+<?php if($flash->hasMessages()) { ?>
+	<?php foreach($flash->getMessages() as $message) { ?>
+		<p class="message"><?=$message?></p>
+	<?php } ?>
+<?php } ?>
+
+<h2><?=\ATP\Inflector::pluralize(\ATP\Inflector::titleize($model))?></h2>
+
+<?=$this->partial('atp-admin/shared/model_list.phtml', array('objects' => $objects, 'model' => $model, 'modelData' => $modelData, 'delete' => true))?>
+
+<div id="dialog-confirm" title="Deleting the <?=$model?>">
+	<p>
+		<span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 6em 0;"></span>
+		<b id="deleted-model-name">Item Name</b><br/><br/>
+		This <?=$model?> will be permanently deleted and cannot be recovered.<br/><br/>
+		<em>Are you sure you want to delete this <?=$model?>?</em>
+	</p>
+</div>

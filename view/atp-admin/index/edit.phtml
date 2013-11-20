@@ -1,0 +1,78 @@
+<?php if($flash->hasMessages()) { ?>
+	<?php foreach($flash->getMessages() as $message) { ?>
+		<p class="message"><?=$message?></p>
+	<?php } ?>
+<?php } ?>
+
+<h2>
+	<?php if($object->id) { ?>
+		Edit <?=\ATP\Inflector::titleize($model)?> - <?=$object->displayName()?>
+	<?php } else { ?>
+		Create New <?=\ATP\Inflector::titleize($model)?>
+	<?php } ?>
+</h2>
+
+<div id="admin-tabs">
+	<ul>
+		<li><a href="#object-details-tab">Details</a></li>
+		<?php if($object->id) { ?>
+			<?php foreach($object->subObjectFields() as $singular => $plural) { ?>
+				<li><a href="#<?=$plural?>-tab"><?=$plural?></a></li>
+			<?php } ?>
+			<?php foreach($object->relatedObjectFields() as $singular => $data) { ?>
+				<?php $plural = \ATP\Inflector::pluralize($singular)?>
+				<li><a href="#<?=$plural?>-tab"><?=$plural?></a></li>
+			<?php } ?>
+		<?php } ?>
+	</ul>
+	
+	<div id="object-details-tab">
+		<div class="admin-edit model-edit-form">
+			<form method="post" enctype="multipart/form-data">
+				<input type="hidden" name="id" value="<?=$object->id?>" />
+				
+				<div class="owner-field-list">
+					<?php foreach($object->ownerFields() as $column => $table) { $columnUnderscore = \ATP\Inflector::underscore($column); ?>
+						<label class="<?=$columnUnderscore?>" for="<?=$columnUnderscore?>"><?=$column?></label>
+						<?=$this->partial('form/model_select.phtml', array('column' => $column, 'obj' => $this->object->$column))?>
+						<a href="<?=$this->basePath() . "/admin/edit/{$columnUnderscore}/{$this->object->$column->id}"?>">Edit <?=$column?></a>
+					<?php } ?>
+				</div>
+				
+				<?php foreach($object->dataColumns() as $column) { ?>
+					<?php $columnData = $modelData['fields'][$column]?>
+					<?php $helper = "form{$columnData['type']}"?>
+					<?=$this->$helper(array('label' => $columnData['label'], 'name' => \ATP\Inflector::underscore($column), 'value' => $object->$column))?>
+				<?php } ?>
+				
+				<input type="submit" class="model-save" name="submit" value="Save <?=\ATP\Inflector::titleize($model)?>" />
+			</form>
+		</div>
+	</div>
+	
+	<?php if($object->id) { ?>
+		<?php foreach($object->subObjectFields() as $singular => $plural) { ?>
+			<div id="<?=$plural?>-tab">
+				<div class="admin-edit">
+					<?php $field = lcfirst($singular) . 'List'?>
+					<?=$this->partial('admin/model_list.phtml', array('objects' => $object->{$field}, 'delete' => false))?>
+					Add <?=$singular?> <?=$this->partial('form/model_select.phtml', array('column' => "new_{$singular}", 'obj' => $object->{$field}->temp()))?>
+				</div>
+			</div>
+		<?php } ?>
+		<?php foreach($this->object->relatedObjectFields() as $singular => $data) { ?>
+			<?php $plural = \ATP\Inflector::pluralize($singular)?>
+			<div id="<?=$plural?>-tab">
+				<div class="admin-edit">
+					<?php $field = lcfirst($singular) . 'List'?>
+					<?=$this->partial('admin/model_list.phtml', array('objects' => $object->{$field}, 'delete' => false))?>
+					Add <?=$singular?> <?=$this->partial('form/model_select.phtml', array('column' => "blah", 'obj' => $object->{$field}->temp()))?>
+				</div>
+			</div>
+		<?php } ?>
+	<?php } ?>
+</div>
+
+<p class="admin-return">
+	<a href="<?=$this->basePath() . "/admin/list/{$model}"?>">Back to <?=\ATP\Inflector::pluralize(\ATP\Inflector::titleize($this->model))?></a>
+</p>
