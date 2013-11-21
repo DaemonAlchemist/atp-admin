@@ -7,7 +7,7 @@ class IndexController extends \ATPCore\Controller\AbstractController
 	private function init()
 	{
 		//Set the admin layout
-		$this->layout("layout/admin");
+		$this->layout("atp-admin/layout/admin");
 		
 		//Get the model information
 		$this->models = $this->config('admin.models');
@@ -103,5 +103,29 @@ class IndexController extends \ATPCore\Controller\AbstractController
 			'modelData' => $this->modelData,
 			'object' => $object
 		));		
+	}
+	
+	public function deleteAction()
+	{
+		$this->init();
+		
+		//Load the object
+		$modelClass = $this->modelData['class'];
+		$object = new $modelClass($this->params('id'));
+		
+		try {
+			$object->delete();
+			$this->flash->addMessage($this->modelType . " " . $object->identity() . " deleted.");
+			$this->redirect()->toRoute('admin', array(
+				'action' => 'list',
+				'model' => $this->modelType,
+			));
+		} catch(\Exception $e) {
+			$this->flash->addMessage("Error deleting " . $this->modelType . " " . $object->identity() . ": " . $e->getMessage());
+			$this->redirect()->toRoute('admin', array(
+				'action' => 'list',
+				'model' => $this->modelType,
+			));
+		}
 	}
 }

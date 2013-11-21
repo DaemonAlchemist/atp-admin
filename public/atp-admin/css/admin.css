@@ -11,7 +11,7 @@
 h1 {float: left; margin: 4px 0 0 10px; font-size: 14pt;}
 a#logout-link, span#id-span {display: block; float: right; margin: 4px 10px 0 0;}
 ul#admin-menu {margin: 0 0 0 0; height: 1.7em; padding: 0;}
-ul#admin-menu > li {float: left; width: 100px; margin: 0; position: relative; z-index: 9;}
+ul#admin-menu > li {float: left; width: 100px; margin: 0; position: relative; z-index: 9; white-space: nowrap;}
 ul#admin-menu span.ui-menu-icon {margin: 0.8em 0 0 0;}
 
 /* End menu bar styles */
@@ -28,7 +28,7 @@ td.button-cell {width: 75px;}
 .admin-edit input {float: left; width: 50%;}
 .admin-edit div.model-input {width: 70%;}
 .admin-edit textarea, .admin-edit span.mceEditor {display: block; float: left; height: 20em; width: 78%;}
-.admin-edit .model-save {margin-top: 30px; width: 200px;}
+.admin-edit .model-save {margin-top: 30px; width: 200px; clear: both;}
 .admin-return {clear: both; text-align: center;}
 
 .ui-tabs-vertical {float: left; width: 85%;}

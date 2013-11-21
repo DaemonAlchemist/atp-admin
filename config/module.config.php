@@ -35,12 +35,6 @@ return array(
         ),
     ),
     'view_manager' => array(
-        'template_map' => array(
-            'layout/admin'         => __DIR__ . '/../view/atp-admin/layout/layout.phtml',
-            'atp-admin/index/index' => __DIR__ . '/../view/atp-admin/index/index.phtml',
-            'atp-admin/index/list' => __DIR__ . '/../view/atp-admin/index/list.phtml',
-            'atp-admin/index/edit' => __DIR__ . '/../view/atp-admin/index/edit.phtml',
-        ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
