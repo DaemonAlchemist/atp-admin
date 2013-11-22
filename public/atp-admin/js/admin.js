@@ -60,6 +60,14 @@ $(function(){
 		changeYear: true
 	});
 	
+	//Fix static block and image sections in input values
+	$('input, textarea').each(function(index, element){
+		$(element).val($(element).val()
+			.replace(/\\{/g, '{')
+			.replace(/\\}/g, '}')
+		);
+	});
+	
 	$('textarea.wysiwyg').tinymce({
 		// General options
 		theme : "advanced",
