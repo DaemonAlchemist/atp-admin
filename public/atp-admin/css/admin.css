@@ -16,7 +16,9 @@ ul#admin-menu span.ui-menu-icon {margin: 0.8em 0 0 0;}
 
 /* End menu bar styles */
 
-p.message {background: #ddffdd; border: dashed 2px #00ff00; padding: 10px; margin: 0 0 10px 250px;}
+p.error-message {background: #ffdddd; border: dashed 2px #ff0000; padding: 10px; margin: 0 0 10px 250px;}
+p.success-message {background: #ddffdd; border: dashed 2px #00ff00; padding: 10px; margin: 0 0 10px 250px;}
+p.info-message {background: #ddddff; border: dashed 2px #0000ff; padding: 10px; margin: 0 0 10px 250px;}
 div#admin-tabs {float: left;}
 table.admin-model-list {}
 table.admin-model-list thead td{text-align: center; font-weight: bold;}

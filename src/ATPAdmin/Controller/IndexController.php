@@ -4,16 +4,28 @@ namespace ATPAdmin\Controller;
 
 class IndexController extends \ATPCore\Controller\AbstractController
 {
-	private function init()
+	private $_checkLogin = true;
+
+	private function init($checkLogin = true)
 	{
+		//Check for logged in user
+		if($checkLogin && $this->_checkLogin && !\ATPAdmin\Auth::isLoggedIn())
+		{
+			$this->redirect()->toRoute('admin', array('action' => 'login'));
+		}
+	
 		//Set the admin layout
 		$this->layout("atp-admin/layout/admin");
 		
 		//Get the model information
 		$this->models = $this->config('admin.models');
 		
+		//Setup the view
+		$this->view = new \Zend\View\Model\ViewModel();
+		
 		//Get the flash messenger
 		$this->flash = $this->flashMessenger();
+		$this->layout()->addChild(new \ATPCore\View\Widget\FlashWidget($this->flash), 'flash');
 		
 		//Create the admin menu
 		$adminMenu = array();
@@ -35,14 +47,41 @@ class IndexController extends \ATPCore\Controller\AbstractController
 		}
 	}
 
+	public function loginAction()
+	{
+		$this->init(false);
+		
+		$this->layout("atp-admin/layout/blank");
+		
+		if(!\ATPAdmin\Model\User::hasUsers())
+		{
+			$this->_checkLogin = false;
+			$this->forward()->dispatch('ATPAdmin\Controller\IndexController', array('action' => 'edit', 'model' => 'admin_users'));
+		}
+		
+		if(count($_POST) > 0)
+		{
+			$user = \ATPAdmin\Auth::authenticatedUser($_POST['username'], $_POST['password']);
+			if(!is_null($user))
+			{
+				\ATPAdmin\Auth::login($user);
+				$this->redirect()->toRoute('admin', array('action' => 'index'));
+			}
+			else
+			{
+				$this->flash->addErrorMessage("Incorrect login information");
+				$this->redirect()->toRoute('admin', array('action' => 'login'));
+			}
+		}
+		
+		return $this->view;
+	}
+	
 	public function indexAction()
 	{
 		$this->init();
 	
-		//echo "<pre>";print_r($this->config('admin.models'));die();
-		return new \Zend\View\Model\ViewModel(array(
-			'flash' => $this->flash
-		));
+		return $this->view;
 	}
 	
 	public function listAction()
@@ -54,12 +93,10 @@ class IndexController extends \ATPCore\Controller\AbstractController
 		$obj = new $modelClass();
 		$objects = $obj->loadMultiple(null, array(), array(), $this->modelData['defaultOrder']);
 		
-		return new \Zend\View\Model\ViewModel(array(
-			'flash' => $this->flash,
-			'model' => $this->modelType,
-			'modelData' => $this->modelData,
-			'objects' => $objects
-		));
+		$this->view->model = $this->modelType;
+		$this->view->modelData = $this->modelData;
+		$this->view->objects = $objects;
+		return $this->view;
 	}
 	
 	public function editAction()
@@ -81,14 +118,14 @@ class IndexController extends \ATPCore\Controller\AbstractController
 			try {
 				$object->setFrom($data);
 				$object->save();
-				$this->flash->addMessage($this->modelType . " " . $object->identity() . " saved.");
+				$this->flash->addSuccessMessage($this->modelType . " " . $object->identity() . " saved.");
 				$this->redirect()->toRoute('admin', array(
 					'action' => 'edit',
 					'model' => $this->modelType,
 					'id' => $object->id
 				));
 			} catch(\Exception $e) {
-				$this->flash->addMessage("Error saving " . $this->modelType . " " . $object->identity . ": " . $e->getMessage());
+				$this->flash->addErrorMessage("Error saving " . $this->modelType . " " . $object->identity . ": " . $e->getMessage());
 				$this->redirect()->toRoute('admin', array(
 					'action' => 'edit',
 					'model' => $this->modelType,
@@ -97,12 +134,10 @@ class IndexController extends \ATPCore\Controller\AbstractController
 			}
 		}
 		
-		return new \Zend\View\Model\ViewModel(array(
-			'flash' => $this->flash,
-			'model' => $this->modelType,
-			'modelData' => $this->modelData,
-			'object' => $object
-		));		
+		$this->view->model = $this->modelType;
+		$this->view->modelData = $this->modelData;
+		$this->view->object = $object;
+		return $this->view;
 	}
 	
 	public function deleteAction()
@@ -115,13 +150,13 @@ class IndexController extends \ATPCore\Controller\AbstractController
 		
 		try {
 			$object->delete();
-			$this->flash->addMessage($this->modelType . " " . $object->identity() . " deleted.");
+			$this->flash->addSuccessMessage($this->modelType . " " . $object->identity() . " deleted.");
 			$this->redirect()->toRoute('admin', array(
 				'action' => 'list',
 				'model' => $this->modelType,
 			));
 		} catch(\Exception $e) {
-			$this->flash->addMessage("Error deleting " . $this->modelType . " " . $object->identity() . ": " . $e->getMessage());
+			$this->flash->addErrorMessage("Error deleting " . $this->modelType . " " . $object->identity() . ": " . $e->getMessage());
 			$this->redirect()->toRoute('admin', array(
 				'action' => 'list',
 				'model' => $this->modelType,

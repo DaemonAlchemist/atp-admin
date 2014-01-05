@@ -1,9 +1,3 @@
-<?php if($flash->hasMessages()) { ?>
-	<?php foreach($flash->getMessages() as $message) { ?>
-		<p class="message"><?=$message?></p>
-	<?php } ?>
-<?php } ?>
-
 <h2><?=\ATP\Inflector::pluralize(\ATP\Inflector::titleize($model))?></h2>
 
 <?=$this->partial('atp-admin/shared/model_list.phtml', array('objects' => $objects, 'model' => $model, 'modelData' => $modelData, 'delete' => true))?>

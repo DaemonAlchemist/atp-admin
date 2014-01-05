@@ -1,4 +1,14 @@
 $(function(){
+	$("#login-dialog").dialog({
+		resizable: false,
+		modal: true,
+		buttons: {
+			"Login": function() {
+				$("#login-form")[0].submit();
+			},
+		}
+	});
+	
 	$('ul#admin-menu').menu({
 		position: {my: "left top", at: "left bottom"},
 		icons: {submenu: "ui-icon-triangle-1-se"}

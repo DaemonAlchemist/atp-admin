@@ -8,6 +8,39 @@
  */
 
 return array(
+	'admin' => array(
+		'auth' => array(
+			'password_salt' => '',
+			'session_namespace' => 'atp_admin',
+		),
+		'models' => array(
+			'admin_users' => array(
+				'displayName' => 'Username',
+				'class' => 'ATPAdmin\Model\User',
+				'category' => 'Admin',
+				'displayColumns' => array('Username', 'Email'),
+				'defaultOrder' => 'username ASC',
+				'fields' => array(
+					'Username' => array(
+						'type' => 'Text',
+						'label' => 'Username',
+					),
+					'Email' => array(
+						'type' => 'Text',
+						'label' => 'Email',
+					),
+					'Password' => array(
+						'type' => 'Password',
+						'label' => 'Password',
+					),
+					'IsActive' => array(
+						'type' => 'Boolean',
+						'label' => 'Is Active',
+					),
+				),
+			),
+		),
+	),
 	'asset_manager' => array(
 		'resolver_configs' => array(
 			'paths' => array(
