@@ -48,6 +48,9 @@ return array(
 			),
 		),
 	),
+	'block_filters' => array(
+		'adminUser' => 'ATPAdmin\View\Filter\AdminUser',
+	),
     'router' => array(
         'routes' => array(
             'admin' => array(

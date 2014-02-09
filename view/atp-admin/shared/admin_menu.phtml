@@ -1,7 +1,7 @@
 <div id="admin-header">
 	<h1><a href="<?=$this->basePath() . "/admin"?>"><?=$this->siteParam('Admin Title')?></a></h1>
 	<a id="logout-link" href="<?=$this->basePath() . "/admin/logout"?>">Logout</a>
-	<span id="id-span">Hi ##Current User##!</span>
+	<span id="id-span">Hi {{adminUser:}}!</span>
 	<ul id="admin-menu">
 		<?php foreach($menu as $category => $models) { ?>
 			<li>

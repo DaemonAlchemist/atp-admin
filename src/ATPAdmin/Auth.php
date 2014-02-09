@@ -46,6 +46,11 @@ class Auth
 		$session->user = $user;
 	}
 	
+	public static function currentUser()
+	{
+		return self::_getSession()->user;
+	}
+	
 	public static function logout($user)
 	{
 		$session = self::_getSession();
