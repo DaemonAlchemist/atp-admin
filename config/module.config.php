@@ -15,7 +15,7 @@ return array(
 		),
 		'models' => array(
 			'admin_users' => array(
-				'displayName' => 'Username',
+				'displayName' => 'Admin User',
 				'class' => 'ATPAdmin\Model\User',
 				'category' => 'Admin',
 				'displayColumns' => array('Username', 'Email'),
