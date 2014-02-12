@@ -95,6 +95,7 @@ $(function(){
 		content_css : "../css/wittrock.css",
 		
 		forced_root_block : false,
+		convert_urls: false,
 		
 		// Drop lists for link/image/media/template dialogs
 		template_external_list_url : "lists/template_list.js",
