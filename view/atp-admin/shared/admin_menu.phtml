@@ -3,14 +3,14 @@
 	<a id="logout-link" href="<?=$this->basePath() . "/admin/logout"?>">Logout</a>
 	<span id="id-span">Hi {{adminUser:}}!</span>
 	<ul id="admin-menu">
-		<?php foreach($menu as $category => $models) { ?>
+		<?php foreach($menu as $category => $menuItems) { ?>
 			<li>
 				<a href=""><?=$category?></a>
 				<ul>
-					<?php foreach($models as $modelData) { ?>
+					<?php foreach($menuItems as $item) { ?>
 						<li>
-							<a href="<?=$this->basePath() . "/admin/list/" . \ATP\Inflector::underscore($modelData['model']) ?>">
-								<?=\ATP\Inflector::pluralize($modelData['name'])?>
+							<a href="<?=$this->basePath() . $item['link'] ?>">
+								<?=$item['label']?>
 							</a>
 						</li>
 					<?php } ?>

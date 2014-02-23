@@ -19,6 +19,7 @@ class IndexController extends \ATPCore\Controller\AbstractController
 		
 		//Get the model information
 		$this->models = $this->config('admin.models');
+		$this->reports = $this->config('admin.reports');
 		
 		//Setup the view
 		$this->view = new \Zend\View\Model\ViewModel();
@@ -29,19 +30,32 @@ class IndexController extends \ATPCore\Controller\AbstractController
 		
 		//Create the admin menu
 		$adminMenu = array();
+		
+		//Add the models
 		foreach($this->models as $model => $modelData)
 		{
 			if(!isset($adminMenu[$modelData['category']])) $adminMenu[$modelData['category']] = array();
 			$adminMenu[$modelData['category']][] = array(
-				'name' => $modelData['displayName'],
-				'model' => $model
+				'label' => \ATP\Inflector::pluralize($modelData['displayName']),
+				'link' => "/admin/list/" . \ATP\Inflector::underscore($model)
 			);
 		}		
+		
+		//Add the reports
+		foreach($this->reports as $report => $reportData)
+		{
+			if(!isset($adminMenu[$reportData['category']])) $adminMenu[$reportData['category']] = array();
+			$adminMenu[$reportData['category']][] = array(
+				'label' => $reportData['label'],
+				'link' => "/admin/report/{$report}"
+			);
+		}
+		
 		$this->layout()->menu = $adminMenu;
 		
 		//Load the model data if needed
 		$this->modelType = $this->params('model');
-		if(!empty($this->modelType))
+		if(!empty($this->modelType) && $this->params('action') != 'report')
 		{
 			$this->modelData = $this->models[$this->modelType];
 		}
@@ -162,5 +176,24 @@ class IndexController extends \ATPCore\Controller\AbstractController
 				'model' => $this->modelType,
 			));
 		}
+	}
+
+	public function reportAction()
+	{
+		$this->init();
+		
+		$report = $this->modelType;
+		$reportInfo = $this->config("admin.reports.{$report}");
+		
+		$reportClass = $reportInfo['class'];
+		$report = new $reportClass();
+		
+		$data = $report->getData();
+		
+		$this->view->columns = $data['columns'];
+		$this->view->data = $data['data'];
+		$this->view->label = $reportInfo['label'];
+		
+		return $this->view;
 	}
 }
