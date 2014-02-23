@@ -38,6 +38,9 @@
 					<?php $columnData = $modelData['fields'][$column]?>
 					<?php $helper = "form{$columnData['type']}"?>
 					<?=$this->$helper(array('label' => $columnData['label'], 'name' => \ATP\Inflector::underscore($column), 'value' => $object->$column))?>
+					<?php if($object->isAFile($column) && !empty($object->$column->name)) { ?>
+						<a class="file-link" href="<?=$this->basePath() . $object->filePath($column)?>" target="blank">View File</a>
+					<?php } ?>
 				<?php } ?>
 				
 				<input type="submit" class="model-save" name="submit" value="Save <?=\ATP\Inflector::titleize($model)?>" />
