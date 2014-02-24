@@ -75,6 +75,9 @@ table.admin-model-list thead td {
  text-align: center;
  font-weight: bold;
 }
+table.admin-model-list tr:nth-child(even) {
+ background: #dddddd;
+}
 div#dialog-confirm {
  font-size: small;
  display: none;
@@ -127,6 +130,9 @@ td.button-cell {
 }
 .admin-edit span.mceEditor {
  margin-bottom: 40px;
+}
+.admin-edit textarea {
+ margin-bottom: 32px;
 }
 .admin-edit .model-save {
  margin-top: 30px;
