@@ -41,13 +41,6 @@ return array(
 			),
 		),
 	),
-	'asset_manager' => array(
-		'resolver_configs' => array(
-			'paths' => array(
-				__DIR__ . '/../public',
-			),
-		),
-	),
 	'block_filters' => array(
 		'adminUser' => 'ATPAdmin\View\Filter\AdminUser',
 	),
@@ -70,11 +63,6 @@ return array(
             'ATPAdmin\Controller\IndexController' => 'ATPAdmin\Controller\IndexController'
         ),
     ),
-    'view_manager' => array(
-        'template_path_stack' => array(
-            __DIR__ . '/../view',
-        ),
-	),
 	'view_helpers' => array(
 		'invokables' => array(
 		)
