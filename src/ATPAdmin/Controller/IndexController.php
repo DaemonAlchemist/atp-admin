@@ -119,16 +119,32 @@ class IndexController extends \ATPCore\Controller\AbstractController
 		
 		//Load the object
 		$modelClass = $this->modelData['class'];
-		$object = new $modelClass($this->params('id'));
+		$object = new $modelClass();
+		$object->loadById($this->params('id'));
 		
 		if(count($_POST) > 0)
 		{
-			$data = $_POST;
-			foreach($_FILES as $name => $fileData)
-			{
-				$data[$name] = $fileData;
-			}
+			$data = $_POST['modelData'];
 			
+			if(count($_FILES) > 0) 
+			{
+				//Reorganize files array
+				$files = array();
+				foreach($_FILES['modelData'] as $var => $inputs)
+				{
+					foreach($inputs as $input => $value)
+					{
+						$files[$input][$var] = $value;
+					}
+				}
+				
+				//Copy files into data array
+				foreach($files as $name => $fileData)
+				{
+					$data[$name] = $fileData;
+				}
+			}
+
 			try {
 				$object->setFrom($data);
 				$object->save();
@@ -139,12 +155,37 @@ class IndexController extends \ATPCore\Controller\AbstractController
 					'id' => $object->id
 				));
 			} catch(\Exception $e) {
-				$this->flash->addErrorMessage("Error saving " . $this->modelType . " " . $object->identity . ": " . $e->getMessage());
+				$this->flash->addErrorMessage("Error saving " . $this->modelType . " " . $object->identity() . ": " . $e->getMessage());
 				$this->redirect()->toRoute('admin', array(
 					'action' => 'edit',
 					'model' => $this->modelType,
 					'id' => $object->id
 				));
+			}
+		}
+		
+		//Set default field types
+		foreach($object->dataColumns() as $column)
+		{
+			if(!isset($this->modelData['fields'])) $this->modelData['fields'] = array();
+			if(!isset($this->modelData['fields'][$column])) $this->modelData['fields'][$column] = array();
+			if(!isset($this->modelData['fields'][$column]['label'])) $this->modelData['fields'][$column]['label'] = ucwords(str_replace("_", " ", $column));
+			
+			if(!isset($this->modelData['fields'][$column]['type']))
+			{
+				$def = $object->getDefinition();
+				
+				$columnType = $def['columns'][$column];
+				
+				$type = "Text";
+				if(strpos($column, 'password') !== false)		$type = "Password";
+				elseif(strpos($columnType, "tinyint(1)") === 0)	$type = "Boolean";
+				elseif(strpos($column, 'html') !== false)		$type = "Html";
+				elseif(strpos($columnType, 'text') !== false)	$type = "Textarea";
+				elseif(strpos($column, '_file') !== false)		$type = "File";
+				elseif(strpos($columnType, 'date') !== false)	$type = "Date";
+				
+				$this->modelData['fields'][$column]['type'] = $type;
 			}
 		}
 		

@@ -20,26 +20,9 @@ return array(
 				'category' => 'Admin',
 				'displayColumns' => array('Username', 'Email'),
 				'defaultOrder' => 'username ASC',
-				'fields' => array(
-					'Username' => array(
-						'type' => 'Text',
-						'label' => 'Username',
-					),
-					'Email' => array(
-						'type' => 'Text',
-						'label' => 'Email',
-					),
-					'Password' => array(
-						'type' => 'Password',
-						'label' => 'Password',
-					),
-					'IsActive' => array(
-						'type' => 'Boolean',
-						'label' => 'Is Active',
-					),
-				),
 			),
 		),
+		'reports' => array(),
 	),
 	'block_filters' => array(
 		'adminUser' => 'ATPAdmin\View\Filter\AdminUser',

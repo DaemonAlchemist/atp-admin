@@ -10,7 +10,7 @@
 	<ul>
 		<li><a href="#object-details-tab">Details</a></li>
 		<?php if($object->id) { ?>
-			<?php foreach($object->subObjectFields() as $singular => $plural) { ?>
+			<?php foreach($object->childrenFields() as $singular => $plural) { ?>
 				<li><a href="#<?=$plural?>-tab"><?=$plural?></a></li>
 			<?php } ?>
 			<?php foreach($object->relatedObjectFields() as $singular => $data) { ?>
@@ -23,13 +23,19 @@
 	<div id="object-details-tab">
 		<div class="admin-edit model-edit-form">
 			<form method="post" enctype="multipart/form-data">
-				<input type="hidden" name="id" value="<?=$object->id?>" />
+				<input type="hidden" name="modelData[id]" value="<?=$object->id?>" />
 				
 				<div class="owner-field-list">
-					<?php foreach($object->ownerFields() as $column => $table) { $columnUnderscore = \ATP\Inflector::underscore($column); ?>
-						<?=$this->formModelSelect(array('label' => $column, 'name' => "{$columnUnderscore}_id", 'className' => get_class($object->$column), 'value' =>$object->$column->id))?>
-						<?php if($object->$column->id) { ?>
-							<!--<a href="<?=$this->basePath() . "/admin/edit/{$columnUnderscore}/{$object->$column->id}"?>">Edit <?=$column?></a>-->
+					<?php foreach($object->ownerFields() as $column => $table) { ?>
+						<?php $ownerField = \ATP\Inflector::variablize(str_replace("_id", "", $column)); ?>
+						<?=$this->formModelSelect(array(
+							'label' => \ATP\Inflector::titleize($ownerField),
+							'name' => "modelData[{$column}]",
+							'className' => get_class($object->$ownerField),
+							'value' =>$object->$ownerField->id
+						))?>
+						<?php if($object->$ownerField->id) { ?>
+							<!--<a href="<?=$this->basePath() . "/admin/edit/{$column}/{$object->$ownerField->id}"?>">Edit <?=$column?></a>-->
 						<?php } ?>
 					<?php } ?>
 				</div>
@@ -37,7 +43,7 @@
 				<?php foreach($object->dataColumns() as $column) { ?>
 					<?php $columnData = $modelData['fields'][$column]?>
 					<?php $helper = "form{$columnData['type']}"?>
-					<?=$this->$helper(array('label' => $columnData['label'], 'name' => \ATP\Inflector::underscore($column), 'value' => $object->$column))?>
+					<?=$this->$helper(array('label' => $columnData['label'], 'name' => "modelData[{$column}]", 'value' => $object->$column))?>
 					<?php if($object->isAFile($column) && !empty($object->$column->name)) { ?>
 						<a class="file-link" href="<?=$this->basePath() . $object->filePath($column)?>" target="blank">View File</a>
 					<?php } ?>
@@ -49,7 +55,7 @@
 	</div>
 	
 	<?php if($object->id) { ?>
-		<?php foreach($object->subObjectFields() as $singular => $plural) { ?>
+		<?php foreach($object->childrenFields() as $singular => $plural) { ?>
 			<div id="<?=$plural?>-tab">
 				<div class="admin-edit">
 					<?php $field = lcfirst($singular) . 'List'?>

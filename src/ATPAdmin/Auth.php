@@ -36,7 +36,8 @@ class Auth
 	
 	public static function authenticatedUser($username, $password)
 	{
-		$user = new \ATPAdmin\Model\User($username);
+		$user = new \ATPAdmin\Model\User();
+		$user->loadByUsername($username);
 		return $user->validatePassword($password) ? $user : null;
 	}
 	

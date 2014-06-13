@@ -6,6 +6,7 @@ class AdminUser extends \ATPCore\View\Filter\AbstractBlockFilter
 {
 	protected function _replace($block)
 	{
-		return \ATPAdmin\Auth::currentUser()->username;
+		$user = \ATPAdmin\Auth::currentUser(); 
+		return !empty($user) ? $user->username : "";
 	}
 }

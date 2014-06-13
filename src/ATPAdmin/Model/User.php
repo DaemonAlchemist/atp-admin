@@ -8,11 +8,9 @@ class User extends \ATP\ActiveRecord
 
 	private $_passwordHash = null;
 
-	protected function createDefinition()
+	protected function setup()
 	{
-		$this->hasData('Username', 'Password', 'Email', 'IsActive')
-			->isIdentifiedBy("Username")
-			->tableNamespace("admin");
+		$this->setTableNamespace("admin");
 	}
 	
 	public static function hasUsers()
@@ -76,5 +74,6 @@ class User extends \ATP\ActiveRecord
 	public function getPassword()
 	{
 		return $this->_passwordHash;
-	}}
+	}
+}
 User::init();
