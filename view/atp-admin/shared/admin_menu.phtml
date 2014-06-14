@@ -1,7 +1,9 @@
 <div id="admin-header">
-	<h1><a href="<?=$this->basePath() . "/admin"?>"><?=$this->siteParam('Admin Title')?></a></h1>
-	<a id="logout-link" href="<?=$this->basePath() . "/admin/logout"?>">Logout</a>
-	<span id="id-span">Hi {{adminUser:}}!</span>
+	<div id="main-header">
+		<h1><a href="<?=$this->basePath() . "/admin"?>"><?=$this->siteParam('Admin Title')?></a></h1>
+		<a id="logout-link" href="<?=$this->basePath() . "/admin/logout"?>">Logout</a>
+		<span id="id-span">Hi {{adminUser:}}!</span>
+	</div>
 	<ul id="admin-menu">
 		<?php foreach($menu as $category => $menuItems) { ?>
 			<li>

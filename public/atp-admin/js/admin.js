@@ -13,7 +13,7 @@ $(function(){
 		position: {my: "left top", at: "left bottom"},
 		icons: {submenu: "ui-icon-triangle-1-se"}
 	});
-	//$('ul#admin-menu .ui-icon').remove();
+	$('ul#admin-menu .ui-icon').remove();
 
 	$('a.model-new').button({
 		icons: {

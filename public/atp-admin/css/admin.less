@@ -1,31 +1,82 @@
+/* Variables */
+@txt: #000000;
+@bg: #aaaaaa;
+@hl: #dddddd;
+@ll: #999999;
+@btn: #999999;
+@gutterWidthRel: 0.01;
+@columnCount: 16;
+@rowHeight: 32px;
+@rowGutterHeight: 8px;
+
+/* Reset */
+* {
+	margin: 0; padding: 0; box-sizing: border-box; -mox-box-sizing: border-box;
+	font-family: Arial,Helvetica,sans-serif; font-size: 16px; line-height: 24px; vertical-align: top; color: @txt;
+	min-height: 24px; border: none; border-width: 0; border-image-width: 0; border-spacing: 0;
+}
+ul, ol {display: block; list-style-type: none;}
+select {height: 24px;}
+button {display: block; background: @hl; background: @btn;}
+
+/* General styles */
+@columnWidth: (100% / (@columnCount + (@gutterWidthRel * @columnCount) - @gutterWidthRel));
+@gutterWidth: (@columnWidth * @gutterWidthRel);
+.columns(@n) {margin: 0 @gutterWidth 0 0; display: block; float: left; width: ((@columnWidth * @n) + (@gutterWidth * (@n - 1)));}
+.columnsRight(@n) {.columns(@n); float: right; margin: 0 0 0 @gutterWidth;}
+.rows(@n) {height: (@rowHeight * @n);}
+.rowPadding {padding: (@rowGutterHeight / 2);}
+.buffered{padding-top: 8px; padding-bottom: 8px;}
+.outerShadow {box-shadow: 0 0 5px #000000;}
+
 /* Login styles */
-
-@bg: #dddddd;
-
 .admin-login {
 	width: 20em; height: 7em; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0; font-size: large;
 	label {width: 20%; float: left; clear: both; margin: 0.25em; text-align: right;}
 	input {width: 70%; float: right; margin: 0.25em;}
 }
 
-/* End login styles */
-
 /* Menu bar styles */
-
-h1 {float: left; margin: 4px 0 0 10px; font-size: 14pt;}
-a#logout-link, span#id-span {display: block; float: right; margin: 4px 10px 0 0;}
+div#main-header {
+	.columns(16); .rows(1); 
+	background-color: @ll;
+	border-bottom: solid 1px @hl;
+	h1 {
+		.columns(3); .rows(1); .rowPadding;
+		a {text-decoration: none;}
+	}
+	a#logout-link {.columnsRight(1); .rows(1); .rowPadding;}
+	span#id-span {.columnsRight(2); .rows(1); .rowPadding;}
+}
 ul#admin-menu {
-	margin: 0 0 0 0; height: 1.7em; padding: 0; background: @bg;
-	& > li {float: left; width: 100px; margin: 0; position: relative; z-index: 9; white-space: nowrap;}
+	clear: both;
+	.columns(16); .rows(1);
+	background: @bg;
+	& > li {
+		.columns(1); .rows(1); .rowPadding; position: relative; z-index: 9; white-space: nowrap; background: @btn;
+		&:hover { background: @hl;}
+		a {
+			text-decoration: none;
+			display: block;
+			width: 100%;
+		}
+		ul {
+			background: @bg; position: absolute; min-width: 200px; .outerShadow;
+			li {
+				.rows(1); .rowPadding;
+				&:hover {background: @hl;}
+			}
+		}
+	}
 	span.ui-menu-icon {margin: 0.8em 0 0 0;}
 }
 
-/* End menu bar styles */
-
+/* Message styles */
 p.error-message {background: #ffdddd; border: dashed 2px #ff0000; padding: 10px; margin: 0 0 10px 250px;}
 p.success-message {background: #ddffdd; border: dashed 2px #00ff00; padding: 10px; margin: 0 0 10px 250px;}
 p.info-message {background: #ddddff; border: dashed 2px #0000ff; padding: 10px; margin: 0 0 10px 250px;}
 
+/* Edit model page styles */
 div#admin-tabs {
 	float: left; background: @bg;
 	& > div {}
