@@ -32,7 +32,7 @@ return array(
             'admin' => array(
                 'type'    => 'Segment',
                 'options' => array(
-                    'route'    => '/admin[/:action[/:model[/:id]]]',
+                    'route'    => '/admin[/[:action[/[:model[/[:id]]]]]]',
                     'defaults' => array(
                         'controller'    => 'ATPAdmin\Controller\IndexController',
                         'action'        => 'index',
