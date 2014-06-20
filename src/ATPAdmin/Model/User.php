@@ -8,15 +8,11 @@ class User extends \ATP\ActiveRecord
 
 	private $_passwordHash = null;
 
-	protected function setup()
-	{
-		$this->setTableNamespace("admin");
-	}
-	
 	public static function hasUsers()
 	{
 		$user = new self();
-		$results = $user->getAdapter()->query("SELECT count(*) users FROM admin_users")->execute();
+		$def = $user->getDefinition();
+		$results = $user->getAdapter()->query("SELECT count(*) users FROM {$def['table']}")->execute();
 
 		foreach($results as $row)
 		{
