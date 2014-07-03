@@ -1,12 +1,13 @@
 <p>
 	<a class="model-new" href="<?=$this->basePath() . "/admin/edit/{$model}"?>">
-		Create a new <?=\ATP\Inflector::singularize(\ATP\Inflector::titleize($this->objects->modelType()))?>
+		Create a new <?=$modelData['displayName']?>
 	</a>
 </p>
 
 <table class="admin-model-list">
 	<thead>
 		<tr>
+			<td class="ui-widget-header ui-corner-all"><?=$modelData['displayName']?></td>
 			<?php foreach($modelData['displayColumns'] as $column) { ?>
 				<td class="ui-widget-header ui-corner-all"><?=$column?></td>
 			<?php } ?>
@@ -16,6 +17,7 @@
 	<tbody>
 		<?php foreach($objects as $obj) { ?>
 			<tr>
+				<td><?=$obj->displayName()?></td>
 				<?php foreach($modelData['displayColumns'] as $column) { ?>
 					<td><?=$obj->$column?></td>
 				<?php } ?>
