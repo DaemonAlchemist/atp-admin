@@ -6,7 +6,7 @@ class IndexController extends \ATPCore\Controller\AbstractController
 {
 	private $_checkLogin = true;
 
-	private function init($checkLogin = true)
+	protected function init($checkLogin = true)
 	{
 		//Check for logged in user
 		if($checkLogin && $this->_checkLogin && !\ATPAdmin\Auth::isLoggedIn())
@@ -35,9 +35,17 @@ class IndexController extends \ATPCore\Controller\AbstractController
 		foreach($this->models as $model => $modelData)
 		{
 			if(!isset($adminMenu[$modelData['category']])) $adminMenu[$modelData['category']] = array();
+			
+			$linkData = array('action' => 'list', 'model' => \ATP\Inflector::underscore($model));
+			if(isset($modelData['custom_actions']['list']))
+			{
+				$linkData['controller'] = $modelData['custom_actions']['list']['controller'];
+				$linkData['action'] = $modelData['custom_actions']['list']['action'];
+			}
+			
 			$adminMenu[$modelData['category']][] = array(
 				'label' => \ATP\Inflector::pluralize($modelData['displayName']),
-				'linkData' => array('action' => 'list', 'model' => \ATP\Inflector::underscore($model))
+				'linkData' => $linkData,
 			);
 		}		
 		
