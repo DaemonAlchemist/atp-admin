@@ -1,5 +1,5 @@
 <p>
-	<a class="model-new" href="<?=$this->basePath() . "/admin/edit/{$model}"?>">
+	<a class="model-new" href="<?=$this->url('admin', array('action' => 'edit', 'model' => $model))?>">
 		Create a new <?=$modelData['displayName']?>
 	</a>
 </p>
@@ -23,11 +23,11 @@
 				<?php } ?>
 				
 				<td class="button-cell">
-					<a class="edit-link admin-list-button" href="<?=$this->basePath() . "/admin/edit/{$model}/{$obj->identity()}"?>">Edit</a>
+					<a class="edit-link admin-list-button" href="<?=$this->url('admin', array('action' => 'edit', 'model' => $model, 'id' => $obj->identity()))?>">Edit</a>
 				</td>
 				<?php if($this->delete) { ?>
 					<td class="button-cell">
-						<a class="delete-link admin-list-button" href="<?=$this->basePath() . "/admin/delete/{$model}/{$obj->identity()}"?>">Delete</a>
+						<a class="delete-link admin-list-button" href="<?=$this->url('admin', array('action' => 'delete', 'model' => $model, 'id' => $obj->identity()))?>">Delete</a>
 					</td>
 				<?php } ?>
 			</tr>

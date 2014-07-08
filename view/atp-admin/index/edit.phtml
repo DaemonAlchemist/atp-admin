@@ -35,7 +35,7 @@
 							'value' =>$object->$ownerField->id
 						))?>
 						<?php if($object->$ownerField->id) { ?>
-							<!--<a href="<?=$this->basePath() . "/admin/edit/{$column}/{$object->$ownerField->id}"?>">Edit <?=$column?></a>-->
+							<!--<a href="<?=$this->url('admin' ,array('action' => 'edit', 'model' => $column, 'id' =>$object->$ownerField->id))?>">Edit <?=$column?></a>-->
 						<?php } ?>
 					<?php } ?>
 				</div>
@@ -45,7 +45,7 @@
 					<?php $helper = "form{$columnData['type']}"?>
 					<?=$this->$helper(array('label' => $columnData['label'], 'name' => "modelData[{$column}]", 'value' => $object->$column))?>
 					<?php if($object->isAFile($column) && !empty($object->$column->name)) { ?>
-						<a class="file-link" href="<?=$this->basePath() . $object->filePath($column)?>" target="blank">View File</a>
+						<a class="file-link" href="<?=$this->url($object->filePath($column))?>" target="blank">View File</a>
 					<?php } ?>
 				<?php } ?>
 				
@@ -78,5 +78,5 @@
 </div>
 
 <p class="admin-return">
-	<a href="<?=$this->basePath() . "/admin/list/{$model}"?>">Back to <?=\ATP\Inflector::pluralize(\ATP\Inflector::titleize($this->model))?></a>
+	<a href="<?=$this->url('admin', array('action' => 'list', 'model' => $model))?>">Back to <?=\ATP\Inflector::pluralize($modelData['displayName'])?> List</a>
 </p>

@@ -36,6 +36,8 @@ return array(
                     'defaults' => array(
                         'controller'    => 'ATPAdmin\Controller\IndexController',
                         'action'        => 'index',
+						'model'			=> null,
+						'id'			=> null,
                     ),
                 ),
             ),

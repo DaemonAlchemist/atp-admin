@@ -37,7 +37,7 @@ class IndexController extends \ATPCore\Controller\AbstractController
 			if(!isset($adminMenu[$modelData['category']])) $adminMenu[$modelData['category']] = array();
 			$adminMenu[$modelData['category']][] = array(
 				'label' => \ATP\Inflector::pluralize($modelData['displayName']),
-				'link' => "/admin/list/" . \ATP\Inflector::underscore($model)
+				'linkData' => array('action' => 'list', 'model' => \ATP\Inflector::underscore($model))
 			);
 		}		
 		
@@ -47,7 +47,7 @@ class IndexController extends \ATPCore\Controller\AbstractController
 			if(!isset($adminMenu[$reportData['category']])) $adminMenu[$reportData['category']] = array();
 			$adminMenu[$reportData['category']][] = array(
 				'label' => $reportData['label'],
-				'link' => "/admin/report/{$report}"
+				'linkData' => array('action' => 'report', 'model' => $report)
 			);
 		}
 		
