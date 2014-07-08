@@ -32,9 +32,9 @@ return array(
             'admin' => array(
                 'type'    => 'Segment',
                 'options' => array(
-                    'route'    => '/admin[/[:action[/[:model[/[:id]]]]]]',
+                    'route'    => '/admin[/[:controller[/[:action[/[:model[/[:id]]]]]]]]',
                     'defaults' => array(
-                        'controller'    => 'ATPAdmin\Controller\IndexController',
+                        'controller'    => 'default-admin',
                         'action'        => 'index',
 						'model'			=> null,
 						'id'			=> null,
@@ -45,7 +45,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'ATPAdmin\Controller\IndexController' => 'ATPAdmin\Controller\IndexController'
+            'default-admin' => 'ATPAdmin\Controller\IndexController'
         ),
     ),
 	'view_helpers' => array(
