@@ -8,6 +8,11 @@
  */
 
 return array(
+	'modules' => array(
+		'ATPAdmin' => array(
+			'version' => '1.0',
+		),
+	),
 	'admin' => array(
 		'auth' => array(
 			'password_salt' => '',
