@@ -8,6 +8,11 @@
             "email": "andy@wittrock.us"
         }
     ],
+    "autoload": {
+        "psr-0": {
+            "ATPAdmin": "src"
+        }
+    },
     "require": {
 		"daemonalchemist/atp-core": "dev-master",
 		"zendframework/zend-session": "2.3.*"
