@@ -116,7 +116,9 @@ class IndexController extends \ATPCore\Controller\AbstractController
 		//Load the objects
 		$modelClass = $this->modelData['class'];
 		$obj = new $modelClass();
-		$objects = $obj->loadMultiple(null, array(), array(), $this->modelData['defaultOrder']);
+		$objects = $obj->loadMultiple(array(
+			'orderBy' => $this->modelData['defaultOrder']
+		));
 		
 		$this->view->model = $this->modelType;
 		$this->view->modelData = $this->modelData;
