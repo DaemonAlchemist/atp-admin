@@ -214,7 +214,8 @@ class IndexController extends \ATPCore\Controller\AbstractController
 		
 		//Load the object
 		$modelClass = $this->modelData['class'];
-		$object = new $modelClass($this->params('id'));
+		$object = new $modelClass();
+		$object->loadById($this->params('id'));
 		
 		try {
 			$object->delete();
