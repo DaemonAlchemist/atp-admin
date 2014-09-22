@@ -75,20 +75,20 @@ h2 {width: 100%; .padded; background: @bg; border-bottom: solid 4px @ll;}
 	}
 	.ui-tabs-panel {
 		float: left; width: 90%; padding-right: 8px; background: @hl; min-height: 500px;
-		label {.padded; float: left; clear: both; border: solid 2px transparent; width: 20%; margin: 8px 0; text-align: right; clear: both;}
+		label {.padded; float: left; clear: both; border: solid 2px @bg; width: 17%; margin: 8px 0; text-align: right; clear: both; background: @bg; margin-left: 3%;}
 		input {
 			border: solid 2px @bg; .padded; width: 80%; margin: 8px 0; float: left;
 			&[type=submit] {width: 200px; text-align: center; font-weight: bold; margin-left: 20%; clear: both;}
 			&[type=file] {width: 70%;}
 		}
 		select{
-			border: solid 2px @bg; float: left; .padded; margin: 8px 0; height: 42px; width: 80%;
+			border: solid 2px @bg; float: left; .padded; margin: 8px 0; height: 44px; width: 80%;
 			option {.padded;}
 			&[type=yes-no] {width: 75px;}
 		}
 		a.file-link {display: block; display: block; float: right; width: 10%; .padded; margin: 8px 0; text-align: center;}
 		textarea {
-			width: 80%; height: 20em; margin: 8px 0; .padded; float: left;
+			width: 80%; height: 20em; margin: 8px 0; .padded; float: left; border: solid 2px @bg;
 			&.wysiwyg {width: 79%;}
 		}
 		/* Fix bugs with mce editor */

@@ -168,10 +168,12 @@ h2 {
  padding: 8px;
  float: left;
  clear: both;
- border: solid 2px transparent;
- width: 20%;
+ border: solid 2px #cccccc;
+ width: 17%;
  margin: 8px 0;
  text-align: right;
+ background: #cccccc;
+ margin-left: 3%;
 }
 .ui-tabs-vertical .ui-tabs-panel input {
  border: solid 2px #cccccc;
@@ -195,7 +197,7 @@ h2 {
  float: left;
  padding: 8px;
  margin: 8px 0;
- height: 42px;
+ height: 44px;
  width: 80%;
 }
 .ui-tabs-vertical .ui-tabs-panel select option {
@@ -218,6 +220,7 @@ h2 {
  margin: 8px 0;
  padding: 8px;
  float: left;
+ border: solid 2px #cccccc;
 }
 .ui-tabs-vertical .ui-tabs-panel textarea.wysiwyg {
  width: 79%;
