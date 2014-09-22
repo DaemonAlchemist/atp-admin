@@ -5,12 +5,6 @@ $(function(){
 	});
 	//$('ul#admin-menu .ui-icon').remove();
 
-	$('a.model-new').button({
-		icons: {
-			primary: "ui-icon-plusthick"
-		}
-	});
-	
 	//Confirm deletion
 	$('a.edit-link').button({
 		icons: {
@@ -41,12 +35,6 @@ $(function(){
 			}
 		});
 		return false;
-	});
-	
-	$('input.model-save').button({
-		icons: {
-			primary: "ui-icon-check"
-		}
 	});
 	
 	$('p.message').click(function(){

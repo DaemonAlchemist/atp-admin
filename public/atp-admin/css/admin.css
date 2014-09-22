@@ -178,6 +178,7 @@ h2 {
  padding: 8px;
  width: 80%;
  margin: 8px 0;
+ float: left;
 }
 .ui-tabs-vertical .ui-tabs-panel input[type=submit] {
  width: 200px;
@@ -197,6 +198,12 @@ h2 {
  height: 42px;
  width: 80%;
 }
+.ui-tabs-vertical .ui-tabs-panel select option {
+ padding: 8px;
+}
+.ui-tabs-vertical .ui-tabs-panel select[type=yes-no] {
+ width: 75px;
+}
 .ui-tabs-vertical .ui-tabs-panel a.file-link {
  display: block;
  float: right;
@@ -208,9 +215,13 @@ h2 {
 .ui-tabs-vertical .ui-tabs-panel textarea {
  width: 80%;
  height: 20em;
+ margin: 8px 0;
+ padding: 8px;
+ float: left;
 }
-.ui-tabs-vertical .ui-tabs-panel textarea.wysiwyg {
- width: 79%;
+.ui-tabs-vertical .ui-tabs-panel table.mceLayout {
+ float: left;
+ margin-top: 12px;
 }
 a.model-new {
  display: block;
@@ -258,6 +269,75 @@ table.admin-model-list tbody tr td.button-cell .admin-list-button {
 }
 table.admin-model-list tbody tr:nth-child(even) {
  background: #eeeeee;
+}
+#ui-datepicker-div {
+ background: #cccccc;
+ box-shadow: 4px 4px 8px;
+ padding: 8px;
+}
+#ui-datepicker-div .date-picker-nav {
+ display: block;
+ width: 10%;
+ text-align: center;
+ overflow: hidden;
+ height: 24px;
+ background: #eeeeee;
+}
+#ui-datepicker-div .ui-datepicker-prev {
+ float: left;
+ display: block;
+ width: 10%;
+ text-align: center;
+ overflow: hidden;
+ height: 24px;
+ background: #eeeeee;
+}
+#ui-datepicker-div .ui-datepicker-prev:before {
+ content: "< ";
+}
+#ui-datepicker-div .ui-datepicker-next {
+ float: right;
+ display: block;
+ width: 10%;
+ text-align: center;
+ overflow: hidden;
+ height: 24px;
+ background: #eeeeee;
+}
+#ui-datepicker-div .ui-datepicker-next:before {
+ content: "> ";
+}
+#ui-datepicker-div .datepicker-button {
+ background: #eeeeee;
+ border: solid 2px #cccccc;
+ width: 64px;
+ text-align: center;
+}
+#ui-datepicker-div .ui-datepicker-current {
+ background: #eeeeee;
+ border: solid 2px #cccccc;
+ width: 64px;
+ text-align: center;
+ float: left;
+}
+#ui-datepicker-div .ui-datepicker-close {
+ background: #eeeeee;
+ border: solid 2px #cccccc;
+ width: 64px;
+ text-align: center;
+ float: right;
+}
+#ui-datepicker-div select {
+ width: 40%;
+}
+#ui-datepicker-div table.ui-datepicker-calendar th {
+ text-align: center;
+}
+#ui-datepicker-div table.ui-datepicker-calendar td {
+ background: #eeeeee;
+ text-align: center;
+ border: solid 2px #cccccc;
+ width: 32px;
 }
 #dialog-confirm {
  display: none;

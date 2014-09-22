@@ -77,18 +77,20 @@ h2 {width: 100%; .padded; background: @bg; border-bottom: solid 4px @ll;}
 		float: left; width: 90%; padding-right: 8px; background: @hl; min-height: 500px;
 		label {.padded; float: left; clear: both; border: solid 2px transparent; width: 20%; margin: 8px 0; text-align: right; clear: both;}
 		input {
-			border: solid 2px @bg; .padded; width: 80%; margin: 8px 0;
+			border: solid 2px @bg; .padded; width: 80%; margin: 8px 0; float: left;
 			&[type=submit] {width: 200px; text-align: center; font-weight: bold; margin-left: 20%; clear: both;}
 			&[type=file] {width: 70%;}
 		}
-		select {
+		select{
 			border: solid 2px @bg; float: left; .padded; margin: 8px 0; height: 42px; width: 80%;
+			option {.padded;}
+			&[type=yes-no] {width: 75px;}
 		}
 		a.file-link {display: block; display: block; float: right; width: 10%; .padded; margin: 8px 0; text-align: center;}
 		textarea {
-			width: 80%; height: 20em;
-			&.wysiwyg {width: 79%;}
+			width: 80%; height: 20em; margin: 8px 0; .padded; float: left;
 		}
+		table.mceLayout {float: left; margin-top: 12px;}
 	}
 }
 
@@ -116,6 +118,33 @@ table.admin-model-list {
 				}
 			}
 			&:nth-child(even) {background: @hl;}
+		}
+	}
+}
+
+/* Date picker */
+
+#ui-datepicker-div {
+	.date-picker-nav {display: block; width: 10%; text-align: center; overflow: hidden; height: 24px; background: @hl;}
+	.ui-datepicker-prev {
+		float: left;
+		.date-picker-nav;
+		&:before {content: "< "}
+	}
+	.ui-datepicker-next{
+		float: right;
+		.date-picker-nav;
+		&:before {content: "> "}
+	}
+	.datepicker-button {background: @hl; border: solid 2px @bg; width: 64px; text-align: center;}
+	.ui-datepicker-current {.datepicker-button; float: left;}
+	.ui-datepicker-close{.datepicker-button; float: right;}
+	background: @bg; .shadowed; .padded;
+	select {width: 40%;}
+	table.ui-datepicker-calendar {
+		th {text-align: center;}
+		td {
+			background: @hl; text-align: center; border: solid 2px @bg; width: 32px;
 		}
 	}
 }
