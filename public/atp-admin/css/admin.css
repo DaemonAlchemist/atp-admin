@@ -1,174 +1,264 @@
-.admin-login {
- width: 20em;
- height: 7em;
- margin: auto;
- position: absolute;
- top: 0;
- left: 0;
- bottom: 0;
- right: 0;
- font-size: large;
-}
-.admin-login label {
- width: 20%;
- float: left;
- clear: both;
- margin: 0.25em;
- text-align: right;
-}
-.admin-login input {
- width: 70%;
- float: right;
- margin: 0.25em;
-}
-h1 {
- float: left;
- margin: 4px 0 0 10px;
- font-size: 14pt;
-}
-a#logout-link,
-span#id-span {
- display: block;
- float: right;
- margin: 4px 10px 0 0;
-}
-ul#admin-menu {
+.reset {
  margin: 0 0 0 0;
- height: 1.7em;
  padding: 0;
- background: #dddddd;
+ float: none;
+ box-sizing: border-box;
+ -mox-box-sizing: border-box;
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 16px;
+ line-height: 24px;
+ vertical-align: top;
+ text-align: justify;
+ color: #000000;
+ border: none;
+ border-width: 0;
+ border-image-width: 0;
+ border-spacing: 0;
 }
-ul#admin-menu > li {
- float: left;
- width: 100px;
- margin: 0;
- position: relative;
- z-index: 9;
- white-space: nowrap;
+* {
+ margin: 0 0 0 0;
+ padding: 0;
+ float: none;
+ box-sizing: border-box;
+ -mox-box-sizing: border-box;
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 16px;
+ line-height: 24px;
+ vertical-align: top;
+ text-align: justify;
+ color: #000000;
+ border: none;
+ border-width: 0;
+ border-image-width: 0;
+ border-spacing: 0;
 }
-ul#admin-menu span.ui-menu-icon {
- margin: 0.8em 0 0 0;
+ul,
+ol {
+ display: block;
+ list-style-type: none;
 }
-p.error-message {
- background: #ffdddd;
- border: dashed 2px #ff0000;
- padding: 10px;
- margin: 0 0 10px 250px;
+select {
+ height: 24px;
 }
-p.success-message {
- background: #ddffdd;
- border: dashed 2px #00ff00;
- padding: 10px;
- margin: 0 0 10px 250px;
+button {
+ display: block;
+ background: #eeeeee;
+ background: #cccccc;
 }
-p.info-message {
- background: #ddddff;
- border: dashed 2px #0000ff;
- padding: 10px;
- margin: 0 0 10px 250px;
+a {
+ text-decoration: none;
 }
-div#admin-tabs {
- float: left;
- background: #dddddd;
+.padded {
+ padding: 8px;
 }
-table.admin-model-list thead td {
+.highlight-link:hover {
+ background: #eeeeee;
+}
+.shadowed {
+ box-shadow: 4px 4px 8px;
+}
+#login-dialog {
+ background: #cccccc;
+ width: 300px;
+ margin: auto;
+ margin-top: 200px;
+ box-shadow: 4px 4px 8px;
+}
+#login-dialog legend {
+ background: #aaaaaa;
+ padding: 8px;
+ width: 100%;
+ font-weight: bold;
+}
+#login-dialog label {
+ display: none;
+}
+#login-dialog input {
+ display: block;
+ width: 100%;
+ padding: 8px;
+ border: solid 8px #cccccc;
+}
+#login-dialog input[type=submit] {
  text-align: center;
  font-weight: bold;
 }
-table.admin-model-list tr:nth-child(even) {
- background: #dddddd;
+#admin-header {
+ width: 100%;
+ background: #cccccc;
+ height: 2.8em;
+ border-bottom: solid 4px #aaaaaa;
 }
-div#dialog-confirm {
- font-size: small;
- display: none;
-}
-a.admin-list-button {
- font-size: small;
- margin: 0;
- padding: 0;
- width: 75px;
-}
-td.button-cell {
- width: 75px;
-}
-.owner-field-list select,
-.owner-field-list a,
-.owner-field-list span {
- display: block;
+#admin-header #main-header h1 {
  float: left;
+ padding: 8px;
 }
-.admin-edit label {
+#admin-header #main-header #logout-link,
+#admin-header #main-header #id-span {
+ float: right;
+ padding: 8px;
+}
+#admin-header ul#admin-menu > li {
  float: left;
- width: 10%;
- clear: both;
- text-align: right;
- padding-right: 16px;
- margin-bottom: 32px;
-}
-.admin-edit input {
- float: left;
- width: 50%;
-}
-.admin-edit input.checkbox {
- width: auto;
-}
-.admin-edit select {
- float: left;
-}
-.admin-edit a.file-link {
- float: left;
-}
-.admin-edit div.model-input {
- width: 80%;
-}
-.admin-edit textarea,
-.admin-edit span.mceEditor {
- display: block;
- float: left;
- height: 20em;
- width: 78%;
-}
-.admin-edit span.mceEditor {
- margin-bottom: 40px;
-}
-.admin-edit textarea {
- margin-bottom: 32px;
-}
-.admin-edit .model-save {
- margin-top: 30px;
- width: 200px;
- clear: both;
-}
-.admin-return {
- clear: both;
+ padding: 8px;
+ width: 5em;
  text-align: center;
+ position: relative;
 }
-.ui-tabs-vertical {
- float: left;
- width: 85%;
+#admin-header ul#admin-menu > li:hover {
+ background: #eeeeee;
+}
+#admin-header ul#admin-menu > li > ul {
+ position: absolute;
+ top: 32px !important;
+ left: 8px !important;
+ box-shadow: 4px 4px 8px;
+ z-index: 999;
+ border: solid #aaaaaa;
+ width: 10em;
+ background: #cccccc;
+}
+#admin-header ul#admin-menu > li > ul > li {
+ padding: 8px;
+}
+#admin-header ul#admin-menu > li > ul > li:hover {
+ background: #eeeeee;
+}
+#admin-header ul#admin-menu > li > ul > li a {
+ display: block;
+ width: 100%;
+}
+h2 {
+ width: 100%;
+ padding: 8px;
+ background: #cccccc;
+ border-bottom: solid 4px #aaaaaa;
 }
 .ui-tabs-vertical .ui-tabs-nav {
- padding: .2em .1em .2em .2em;
  float: left;
  width: 10%;
+ background: #aaaaaa;
+ min-height: 500px;
 }
 .ui-tabs-vertical .ui-tabs-nav li {
- clear: left;
+ padding: 8px;
+ background: #cccccc;
  width: 100%;
- border-bottom-width: 1px !important;
- border-right-width: 0 !important;
- margin: 0 -1px .2em 0;
+ border-right: solid 4px #aaaaaa;
 }
-.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active {
- padding-bottom: 0;
- padding-right: .1em;
- border-right-width: 1px;
+.ui-tabs-vertical .ui-tabs-nav li:hover {
+ background: #eeeeee;
 }
 .ui-tabs-vertical .ui-tabs-nav li a {
  display: block;
+ width: 100%;
+}
+.ui-tabs-vertical .ui-tabs-nav li.ui-state-active {
+ background: #eeeeee;
+ border-right: solid 4px #eeeeee;
 }
 .ui-tabs-vertical .ui-tabs-panel {
- padding: 1em;
  float: left;
- width: 85%;
+ width: 90%;
+ padding-right: 8px;
+ background: #eeeeee;
+ min-height: 500px;
+}
+.ui-tabs-vertical .ui-tabs-panel label {
+ padding: 8px;
+ float: left;
+ clear: both;
+ border: solid 2px transparent;
+ width: 20%;
+ margin: 8px 0;
+ text-align: right;
+}
+.ui-tabs-vertical .ui-tabs-panel input {
+ border: solid 2px #cccccc;
+ padding: 8px;
+ width: 80%;
+ margin: 8px 0;
+}
+.ui-tabs-vertical .ui-tabs-panel input[type=submit] {
+ width: 200px;
+ text-align: center;
+ font-weight: bold;
+ margin-left: 20%;
+ clear: both;
+}
+.ui-tabs-vertical .ui-tabs-panel input[type=file] {
+ width: 70%;
+}
+.ui-tabs-vertical .ui-tabs-panel select {
+ border: solid 2px #cccccc;
+ float: left;
+ padding: 8px;
+ margin: 8px 0;
+ height: 42px;
+ width: 80%;
+}
+.ui-tabs-vertical .ui-tabs-panel a.file-link {
+ display: block;
+ float: right;
+ width: 10%;
+ padding: 8px;
+ margin: 8px 0;
+ text-align: center;
+}
+.ui-tabs-vertical .ui-tabs-panel textarea {
+ width: 80%;
+ height: 20em;
+}
+.ui-tabs-vertical .ui-tabs-panel textarea.wysiwyg {
+ width: 79%;
+}
+a.model-new {
+ display: block;
+ border: solid 4px #aaaaaa;
+ background: #eeeeee;
+ font-weight: bold;
+ padding: 8px;
+ margin: 8px;
+ border-radius: 8px;
+ width: 300px;
+}
+a.model-new:before {
+ content: "+";
+ font-size: 18pt;
+ margin-left: 5px;
+}
+table.admin-model-list {
+ width: 100%;
+ border-bottom: solid 4px #aaaaaa;
+}
+table.admin-model-list thead tr {
+ background: #cccccc;
+}
+table.admin-model-list thead tr td {
+ padding: 8px;
+ font-weight: bold;
+}
+table.admin-model-list tbody tr td {
+ padding: 8px;
+}
+table.admin-model-list tbody tr td.button-cell {
+ padding: 4px 8px 0 0;
+ width: 90px;
+}
+table.admin-model-list tbody tr td.button-cell .admin-list-button {
+ display: block;
+ width: 100%;
+ border: solid 4px #aaaaaa;
+ background: #eeeeee;
+ font-weight: bold;
+ height: 32px;
+ padding: 0 8px;
+ border-radius: 8px;
+ text-align: center;
+}
+table.admin-model-list tbody tr:nth-child(even) {
+ background: #eeeeee;
+}
+#dialog-confirm {
+ display: none;
 }

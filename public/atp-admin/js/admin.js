@@ -1,14 +1,4 @@
 $(function(){
-	$("#login-dialog").dialog({
-		resizable: false,
-		modal: true,
-		buttons: {
-			"Login": function() {
-				$("#login-form")[0].submit();
-			},
-		}
-	});
-	
 	$('ul#admin-menu').menu({
 		position: {my: "left top", at: "left bottom"},
 		icons: {submenu: "ui-icon-triangle-1-se"}
@@ -92,7 +82,7 @@ $(function(){
 		theme_advanced_resizing : true,
 
 		// Example content CSS (should be your site CSS)
-		content_css : "../css/wittrock.css",
+		//content_css : "../css/wittrock.css",
 		
 		forced_root_block : false,
 		convert_urls: false,
@@ -104,6 +94,5 @@ $(function(){
 		media_external_list_url : "lists/media_list.js"
 	});
 
-	$( "#admin-tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
-	$( "#admin-tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+	$( "#admin-tabs" ).tabs().addClass( "ui-tabs-vertical");
 });

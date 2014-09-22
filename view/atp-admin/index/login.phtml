@@ -1,6 +1,10 @@
 <div id="login-dialog" title="Admin Login">
-	<form method="post" id="login-form">
-		<?=$this->formText(array('label' => 'Username', 'name' => 'username', 'value' => ''))?>
-		<?=$this->formPassword(array('label' => 'Password', 'name' => 'password'))?>
-	</form>
+	<fieldset>
+		<legend>Admin Login</legend>
+		<form method="post" id="login-form">
+			<?=$this->formText(array('label' => 'Username', 'name' => 'username', 'value' => '', 'placeholder' => 'Username'))?>
+			<?=$this->formPassword(array('label' => 'Password', 'name' => 'password', 'placeholder' => 'Password'))?>
+			<input type="submit" value="Login" />
+		</form>
+	</fieldset>
 </div>

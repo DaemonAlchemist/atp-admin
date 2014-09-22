@@ -1,70 +1,123 @@
+@txt: #000000;
+@bg: #cccccc;
+@hl: #eeeeee;
+@ll: #aaaaaa;
+
+/* Reset */
+.reset {
+	margin: 0 0 0 0; padding: 0; float: none; box-sizing: border-box; -mox-box-sizing: border-box;
+	font-family: Arial,Helvetica,sans-serif; font-size: 16px; line-height: 24px; vertical-align: top; text-align: justify; color: @txt;
+	border: none; border-width: 0; border-image-width: 0; border-spacing: 0;
+}
+*  {.reset;}
+ul, ol {display: block; list-style-type: none;}
+select {height: 24px;}
+button {display: block; background: @hl; background: @bg;}
+a {
+	text-decoration: none;
+}
+
+
+/* General Styles */
+.padded {padding: 8px;}
+.highlight-link {
+	&:hover {background: @hl;}
+}
+.shadowed {box-shadow: 4px 4px 8px;}
+
 /* Login styles */
 
-@bg: #dddddd;
-
-.admin-login {
-	width: 20em; height: 7em; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0; font-size: large;
-	label {width: 20%; float: left; clear: both; margin: 0.25em; text-align: right;}
-	input {width: 70%; float: right; margin: 0.25em;}
+#login-dialog {
+	background: @bg; width: 300px; margin: auto; margin-top: 200px; .shadowed;
+	legend {background: @ll; .padded; width: 100%; font-weight: bold;}
+	label {display: none;}
+	input {display: block; width: 100%; .padded; border: solid 8px @bg;}
+	input[type=submit] {text-align: center; font-weight: bold;}
 }
 
-/* End login styles */
+/* Header styles */
 
-/* Menu bar styles */
-
-h1 {float: left; margin: 4px 0 0 10px; font-size: 14pt;}
-a#logout-link, span#id-span {display: block; float: right; margin: 4px 10px 0 0;}
-ul#admin-menu {
-	margin: 0 0 0 0; height: 1.7em; padding: 0; background: @bg;
-	& > li {float: left; width: 100px; margin: 0; position: relative; z-index: 9; white-space: nowrap;}
-	span.ui-menu-icon {margin: 0.8em 0 0 0;}
-}
-
-/* End menu bar styles */
-
-p.error-message {background: #ffdddd; border: dashed 2px #ff0000; padding: 10px; margin: 0 0 10px 250px;}
-p.success-message {background: #ddffdd; border: dashed 2px #00ff00; padding: 10px; margin: 0 0 10px 250px;}
-p.info-message {background: #ddddff; border: dashed 2px #0000ff; padding: 10px; margin: 0 0 10px 250px;}
-
-div#admin-tabs {
-	float: left; background: @bg;
-	& > div {}
-}
-table.admin-model-list {
-	thead td{text-align: center; font-weight: bold;}
-	tr:nth-child(even) {background: @bg;}
-}
-div#dialog-confirm {font-size: small; display: none;}
-
-a.admin-list-button {font-size: small; margin: 0; padding: 0; width: 75px;}
-td.button-cell {width: 75px;}
-.owner-field-list select, .owner-field-list a, .owner-field-list span{display: block; float: left;}
-
-.admin-edit {
-	label {float: left; width: 10%; clear: both; text-align: right; padding-right: 16px; margin-bottom: 32px;}
-	input {
-		float: left; width: 50%;
-		&.checkbox {width: auto;}
+#admin-header {
+	width: 100%; background: @bg; height: 2.8em; border-bottom: solid 4px @ll;
+	#main-header {
+		h1 {float: left; .padded;}
+		#logout-link, #id-span {float: right; .padded;}
 	}
-	select {float: left;}
-	a.file-link {float: left;}
-	div.model-input {width: 80%;}
-	textarea, span.mceEditor {display: block; float: left; height: 20em; width: 78%;}
-	span.mceEditor {margin-bottom: 40px;}
-	textarea {margin-bottom: 32px;}
-	.model-save {margin-top: 30px; width: 200px; clear: both;}
-}
-.admin-return {clear: both; text-align: center;}
-
-.ui-tabs-vertical {
-	float: left; width: 85%;
-	.ui-tabs-nav {
-		padding: .2em .1em .2em .2em; float: left; width: 10%;
-		li {
-			clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0;
-			&.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
-			a { display:block; }
+	ul#admin-menu {
+		& > li {
+			float: left; .padded; width: 5em; text-align: center; position: relative; .highlight-link;
+			& > ul {
+				position: absolute; top: 32px !important; left: 8px !important; .shadowed; z-index: 999;
+				border: solid @ll;
+				width: 10em;
+				background: @bg;
+				& > li {
+					.padded; .highlight-link;
+					a {display: block; width: 100%;}
+				}
+			}
 		}
 	}
-	.ui-tabs-panel { padding: 1em; float: left; width: 85%;}
 }
+
+/* General page styles */
+h2 {width: 100%; .padded; background: @bg; border-bottom: solid 4px @ll;}
+
+.ui-tabs-vertical {
+	.ui-tabs-nav {
+		float: left; width: 10%; background: @ll; min-height: 500px;
+		li{
+			.padded; background: @bg; .highlight-link; width: 100%;
+			border-right: solid 4px @ll;
+			a {display: block; width: 100%;}
+			&.ui-state-active {background: @hl; border-right: solid 4px @hl;}
+		}
+	}
+	.ui-tabs-panel {
+		float: left; width: 90%; padding-right: 8px; background: @hl; min-height: 500px;
+		label {.padded; float: left; clear: both; border: solid 2px transparent; width: 20%; margin: 8px 0; text-align: right; clear: both;}
+		input {
+			border: solid 2px @bg; .padded; width: 80%; margin: 8px 0;
+			&[type=submit] {width: 200px; text-align: center; font-weight: bold; margin-left: 20%; clear: both;}
+			&[type=file] {width: 70%;}
+		}
+		select {
+			border: solid 2px @bg; float: left; .padded; margin: 8px 0; height: 42px; width: 80%;
+		}
+		a.file-link {display: block; display: block; float: right; width: 10%; .padded; margin: 8px 0; text-align: center;}
+		textarea {
+			width: 80%; height: 20em;
+			&.wysiwyg {width: 79%;}
+		}
+	}
+}
+
+/* Model List styles */
+a.model-new {
+	display: block; border: solid 4px @ll; background: @hl; font-weight: bold; .padded; margin: 8px; border-radius: 8px; width: 300px;
+	&:before {content: "+"; font-size: 18pt; margin-left: 5px;}
+}
+table.admin-model-list {
+	width: 100%; border-bottom: solid 4px @ll;
+	thead tr {
+		background: @bg;
+		td {.padded; font-weight: bold;}
+	}
+	tbody {
+		tr {
+			td {.padded;}
+			td.button-cell {
+				padding: 4px 8px 0 0;
+				width: 90px;
+				.admin-list-button {
+					display: block; width: 100%;
+					border: solid 4px @ll; background: @hl; font-weight: bold; height: 32px; padding: 0 8px; border-radius: 8px;
+					text-align: center;
+				}
+			}
+			&:nth-child(even) {background: @hl;}
+		}
+	}
+}
+
+#dialog-confirm {display: none;}

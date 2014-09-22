@@ -4,10 +4,9 @@
 
 <head>
 	<?=$this->headTitle($this->siteParam("Admin Title"))->setSeparator(" | ")?>
-	<?=$this->headLink()
-		->appendStylesheet($this->basePath() . "/atp-admin/css/admin.css")
-		->appendStylesheet($this->basePath() . "/atp-core/css/redmond/jquery-ui-1.10.3.custom.min.css")
-	?>
+	<?php $this->appendCss("/atp-admin/css/admin.less")?>
+	<?=$this->headLink()?>
+	
 	<?=$this->headScript()
 		->prependFile($this->basePath() . "/atp-admin/js/admin.js")
 		->prependFile($this->basePath() . "/atp-core/js/tiny_mce/jquery.tinymce.js")
