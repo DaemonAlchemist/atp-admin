@@ -219,9 +219,18 @@ h2 {
  padding: 8px;
  float: left;
 }
+.ui-tabs-vertical .ui-tabs-panel textarea.wysiwyg {
+ width: 79%;
+}
 .ui-tabs-vertical .ui-tabs-panel table.mceLayout {
  float: left;
- margin-top: 12px;
+ margin: 8px 0;
+}
+.ui-tabs-vertical .ui-tabs-panel .mceStatusbar {
+ height: 28px;
+}
+.ui-tabs-vertical .ui-tabs-panel .mceStatusbar .mceResize {
+ margin-top: 8px;
 }
 a.model-new {
  display: block;

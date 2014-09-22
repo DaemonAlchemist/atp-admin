@@ -89,8 +89,14 @@ h2 {width: 100%; .padded; background: @bg; border-bottom: solid 4px @ll;}
 		a.file-link {display: block; display: block; float: right; width: 10%; .padded; margin: 8px 0; text-align: center;}
 		textarea {
 			width: 80%; height: 20em; margin: 8px 0; .padded; float: left;
+			&.wysiwyg {width: 79%;}
 		}
-		table.mceLayout {float: left; margin-top: 12px;}
+		/* Fix bugs with mce editor */
+		table.mceLayout {float: left; margin: 8px 0;}
+		.mceStatusbar {
+			height: 28px;
+			.mceResize {margin-top: 8px;}
+		}
 	}
 }
 
