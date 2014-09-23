@@ -63,6 +63,8 @@ a {
 /* General page styles */
 h2 {width: 100%; .padded; background: @bg; border-bottom: solid 4px @ll;}
 
+input[type=submit] {width: 200px; text-align: center; font-weight: bold; border: solid @ll; float: right; margin-top: -4px;}
+
 .ui-tabs-vertical {
 	.ui-tabs-nav {
 		float: left; width: 10%; background: @ll; min-height: 500px;
@@ -78,7 +80,6 @@ h2 {width: 100%; .padded; background: @bg; border-bottom: solid 4px @ll;}
 		label {.padded; float: left; clear: both; border: solid 2px @bg; width: 17%; margin: 8px 0; text-align: right; clear: both; background: @bg; margin-left: 3%;}
 		input {
 			border: solid 2px @bg; .padded; width: 80%; margin: 8px 0; float: left;
-			&[type=submit] {width: 200px; text-align: center; font-weight: bold; margin-left: 20%; clear: both;}
 			&[type=file] {width: 70%;}
 		}
 		select{

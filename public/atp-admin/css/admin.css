@@ -134,6 +134,14 @@ h2 {
  background: #cccccc;
  border-bottom: solid 4px #aaaaaa;
 }
+input[type=submit] {
+ width: 200px;
+ text-align: center;
+ font-weight: bold;
+ border: solid #aaaaaa;
+ float: right;
+ margin-top: -4px;
+}
 .ui-tabs-vertical .ui-tabs-nav {
  float: left;
  width: 10%;
@@ -181,13 +189,6 @@ h2 {
  width: 80%;
  margin: 8px 0;
  float: left;
-}
-.ui-tabs-vertical .ui-tabs-panel input[type=submit] {
- width: 200px;
- text-align: center;
- font-weight: bold;
- margin-left: 20%;
- clear: both;
 }
 .ui-tabs-vertical .ui-tabs-panel input[type=file] {
  width: 70%;

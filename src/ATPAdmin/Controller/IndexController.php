@@ -202,6 +202,17 @@ class IndexController extends \ATPCore\Controller\AbstractController
 			}
 		}
 		
+		//Set tab grouping for fields
+		if(!isset($this->modelData['tabs']))
+		{
+			$this->modelData['tabs'] = array(
+				'Details' => array_merge(
+					array_keys($object->ownerFields()),
+					$object->dataColumns()
+				),
+			);			
+		}
+		
 		$this->view->model = $this->modelType;
 		$this->view->modelData = $this->modelData;
 		$this->view->object = $object;
