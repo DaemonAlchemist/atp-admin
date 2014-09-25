@@ -66,21 +66,27 @@ h2 {width: 100%; .padded; background: @bg; border-bottom: solid 4px @ll;}
 input[type=submit] {width: 200px; text-align: center; font-weight: bold; border: solid @ll; float: right; margin-top: -4px;}
 
 .ui-tabs-vertical {
+	
 	.ui-tabs-nav {
 		float: left; width: 10%; background: @ll; min-height: 500px;
 		li{
-			.padded; background: @bg; .highlight-link; width: 100%;
-			border-right: solid 4px @ll;
+			.padded; background: @bg; .highlight-link; margin-left: 4px; margin-top: 4px;
 			a {display: block; width: 100%;}
-			&.ui-state-active {background: @hl; border-right: solid 4px @hl;}
+			&:first-child{border-top-left-radius: 16px; margin-top: 8px;}
+			&:last-child{border-bottom-left-radius: 16px;}
+			&.ui-state-active {
+				background: @hl;
+			}
 		}
 	}
 	.ui-tabs-panel {
-		float: left; width: 90%; padding-right: 8px; background: @hl; min-height: 500px;
-		label {.padded; float: left; clear: both; border: solid 2px @bg; width: 17%; margin: 8px 0; text-align: right; clear: both; background: @bg; margin-left: 3%;}
+		border-bottom: solid 8px @ll;
+		float: left; width: 90%; padding: 8px; background: @hl; min-height: 500px;
+		label {.padded; float: left; clear: both; border: solid 2px @bg; width: 20%; margin: 8px 0; text-align: right; background: @bg;}
 		input {
 			border: solid 2px @bg; .padded; width: 80%; margin: 8px 0; float: left;
 			&[type=file] {width: 70%;}
+			&[type=checkbox] {width: 32px; border: none;}
 		}
 		select{
 			border: solid 2px @bg; float: left; .padded; margin: 8px 0; height: 44px; width: 80%;
@@ -100,6 +106,11 @@ input[type=submit] {width: 200px; text-align: center; font-weight: bold; border:
 		}
 	}
 }
+
+.section-header {
+	background: @bg; .padded; border-bottom: solid 4px @ll;
+}
+.section {.padded; margin-bottom: 16px;}
 
 /* Model List styles */
 a.model-new {
@@ -132,6 +143,7 @@ table.admin-model-list {
 /* Date picker */
 
 #ui-datepicker-div {
+	display: none;
 	.date-picker-nav {display: block; width: 10%; text-align: center; overflow: hidden; height: 24px; background: @hl;}
 	.ui-datepicker-prev {
 		float: left;

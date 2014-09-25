@@ -151,8 +151,8 @@ input[type=submit] {
 .ui-tabs-vertical .ui-tabs-nav li {
  padding: 8px;
  background: #cccccc;
- width: 100%;
- border-right: solid 4px #aaaaaa;
+ margin-left: 4px;
+ margin-top: 4px;
 }
 .ui-tabs-vertical .ui-tabs-nav li:hover {
  background: #eeeeee;
@@ -161,14 +161,21 @@ input[type=submit] {
  display: block;
  width: 100%;
 }
+.ui-tabs-vertical .ui-tabs-nav li:first-child {
+ border-top-left-radius: 16px;
+ margin-top: 8px;
+}
+.ui-tabs-vertical .ui-tabs-nav li:last-child {
+ border-bottom-left-radius: 16px;
+}
 .ui-tabs-vertical .ui-tabs-nav li.ui-state-active {
  background: #eeeeee;
- border-right: solid 4px #eeeeee;
 }
 .ui-tabs-vertical .ui-tabs-panel {
+ border-bottom: solid 8px #aaaaaa;
  float: left;
  width: 90%;
- padding-right: 8px;
+ padding: 8px;
  background: #eeeeee;
  min-height: 500px;
 }
@@ -177,11 +184,10 @@ input[type=submit] {
  float: left;
  clear: both;
  border: solid 2px #cccccc;
- width: 17%;
+ width: 20%;
  margin: 8px 0;
  text-align: right;
  background: #cccccc;
- margin-left: 3%;
 }
 .ui-tabs-vertical .ui-tabs-panel input {
  border: solid 2px #cccccc;
@@ -192,6 +198,10 @@ input[type=submit] {
 }
 .ui-tabs-vertical .ui-tabs-panel input[type=file] {
  width: 70%;
+}
+.ui-tabs-vertical .ui-tabs-panel input[type=checkbox] {
+ width: 32px;
+ border: none;
 }
 .ui-tabs-vertical .ui-tabs-panel select {
  border: solid 2px #cccccc;
@@ -235,6 +245,15 @@ input[type=submit] {
 }
 .ui-tabs-vertical .ui-tabs-panel .mceStatusbar .mceResize {
  margin-top: 8px;
+}
+.section-header {
+ background: #cccccc;
+ padding: 8px;
+ border-bottom: solid 4px #aaaaaa;
+}
+.section {
+ padding: 8px;
+ margin-bottom: 16px;
 }
 a.model-new {
  display: block;
@@ -284,6 +303,7 @@ table.admin-model-list tbody tr:nth-child(even) {
  background: #eeeeee;
 }
 #ui-datepicker-div {
+ display: none;
  background: #cccccc;
  box-shadow: 4px 4px 8px;
  padding: 8px;
