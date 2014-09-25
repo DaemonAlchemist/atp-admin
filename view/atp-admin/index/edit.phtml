@@ -14,6 +14,9 @@
 			<?php foreach(array_keys($modelData['tabs']) as $tab) { ?>
 				<li><a href="#object-<?=\ATP\Inflector::underscore($tab)?>-tab"><?=$tab?></a></li>
 			<?php } ?>
+			<?php foreach(array_keys($modelData['customTabs']) as $tab) { ?>
+				<li><a href="#object-<?=\ATP\Inflector::underscore($tab)?>-tab"><?=$tab?></a></li>	
+			<?php } ?>
 		</ul>
 	
 		<input type="hidden" name="modelData[id]" value="<?=$object->id?>" />
@@ -44,6 +47,11 @@
 						
 					<?php } ?>
 				</div>
+			</div>
+		<?php } ?>
+		<?php foreach($modelData['customTabs'] as $tab => $template) { ?>
+			<div id="object-<?=\ATP\Inflector::underscore($tab)?>-tab">
+				<?=$this->partial($template, array('object' => $object))?>
 			</div>
 		<?php } ?>
 	</div>

@@ -213,6 +213,9 @@ class IndexController extends \ATPCore\Controller\AbstractController
 			);			
 		}
 		
+		//Detect custom tabs
+		if(!isset($this->modelData['customTabs'])) $this->modelData['customTabs'] = array();
+		
 		$this->view->model = $this->modelType;
 		$this->view->modelData = $this->modelData;
 		$this->view->object = $object;
