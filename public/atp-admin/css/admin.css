@@ -302,6 +302,46 @@ table.admin-model-list tbody tr td.button-cell .admin-list-button {
 table.admin-model-list tbody tr:nth-child(even) {
  background: #eeeeee;
 }
+div[aria-describedby=dialog-confirm] {
+ border-radius: 8px;
+ box-shadow: 4px 4px 8px;
+}
+div[aria-describedby=dialog-confirm] button {
+ border: solid 4px #aaaaaa;
+ background: #eeeeee;
+ font-weight: bold;
+ height: 32px;
+ padding: 0 8px;
+ border-radius: 8px;
+}
+div[aria-describedby=dialog-confirm] .ui-dialog-titlebar {
+ padding: 8px;
+ background: #cccccc;
+ border-top-left-radius: 8px;
+ border-top-right-radius: 8px;
+}
+div[aria-describedby=dialog-confirm] .ui-dialog-titlebar span.ui-dialog-title {
+ font-weight: bold;
+}
+div[aria-describedby=dialog-confirm] .ui-dialog-titlebar button {
+ float: right;
+ margin-top: -4px;
+}
+div[aria-describedby=dialog-confirm] .ui-dialog-content {
+ padding: 8px;
+}
+div[aria-describedby=dialog-confirm] .ui-dialog-buttonpane {
+ border-top: dashed 2px #aaaaaa;
+ height: 48px;
+ padding: 8px;
+}
+div[aria-describedby=dialog-confirm] .ui-dialog-buttonpane .ui-dialog-buttonset {
+ text-align: center;
+}
+div[aria-describedby=dialog-confirm] .ui-dialog-buttonpane .ui-dialog-buttonset button {
+ display: inline;
+ margin: 0 8px 0 8px;
+}
 #ui-datepicker-div {
  display: none;
  background: #cccccc;

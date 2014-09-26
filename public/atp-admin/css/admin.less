@@ -140,6 +140,27 @@ table.admin-model-list {
 	}
 }
 
+div[aria-describedby=dialog-confirm] {
+	border-radius: 8px;
+	.shadowed;
+	button {border: solid 4px @ll; background: @hl; font-weight: bold; height: 32px; padding: 0 8px; border-radius: 8px;}
+	.ui-dialog-titlebar {
+		.padded; background: @bg;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		span.ui-dialog-title {font-weight: bold;}
+		button {float: right; margin-top: -4px;}
+	}
+	.ui-dialog-content {.padded;}
+	.ui-dialog-buttonpane {
+		border-top: dashed 2px @ll; height: 48px; .padded;
+		.ui-dialog-buttonset {
+			text-align: center;
+			button {display: inline; margin: 0 8px 0 8px;}
+		}
+	}
+}
+
 /* Date picker */
 
 #ui-datepicker-div {
