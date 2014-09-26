@@ -142,6 +142,16 @@ input[type=submit] {
  float: right;
  margin-top: -4px;
 }
+p.success-message {
+ background: #ccffcc;
+ color: #00aa00;
+ border: dashed 2px #00aa00;
+ padding: 8px;
+ position: absolute;
+ top: 8px;
+ left: 25%;
+ right: 25%;
+}
 .ui-tabs-vertical .ui-tabs-nav {
  float: left;
  width: 10%;

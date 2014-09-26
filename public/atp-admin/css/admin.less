@@ -65,6 +65,16 @@ h2 {width: 100%; .padded; background: @bg; border-bottom: solid 4px @ll;}
 
 input[type=submit] {width: 200px; text-align: center; font-weight: bold; border: solid @ll; float: right; margin-top: -4px;}
 
+p.success-message {
+	@successBG: #ccffcc;
+	@successTXT: #00aa00;
+	background: @successBG;
+	color: @successTXT;
+	border: dashed 2px @successTXT;
+	.padded;
+	position: absolute; top: 8px; left: 25%; right: 25%;
+}
+
 .ui-tabs-vertical {
 	
 	.ui-tabs-nav {
