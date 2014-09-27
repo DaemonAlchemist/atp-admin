@@ -134,6 +134,9 @@ h2 {
  background: #cccccc;
  border-bottom: solid 4px #aaaaaa;
 }
+body {
+ background: #aaaaaa;
+}
 input[type=submit] {
  width: 200px;
  text-align: center;
