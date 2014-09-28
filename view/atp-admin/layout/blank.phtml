@@ -3,7 +3,7 @@
 <html>
 
 <head>
-	<?=$this->headTitle($this->siteParam("Admin Title"))->setSeparator(" | ")?>
+	<?=$this->headTitle($this->siteParam("core-admin-title"))->setSeparator($this->siteParam("core-site-title-sep"))?>
 	<?php $this->appendCss("/atp-admin/css/admin.less")?>
 	<?=$this->headLink()?>
 	
