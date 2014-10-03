@@ -425,6 +425,23 @@ div[aria-describedby=dialog-confirm] .ui-dialog-buttonpane .ui-dialog-buttonset 
  border: solid 2px #cccccc;
  width: 32px;
 }
+#ui-datepicker-div table.ui-datepicker-calendar td.ui-datepicker-week-end {
+ background: #aaaaaa;
+}
+#ui-datepicker-div table.ui-datepicker-calendar td.ui-datepicker-other-month {
+ background: #cccccc;
+}
+#ui-datepicker-div table.ui-datepicker-calendar td.ui-datepicker-current-day {
+ background: #eeeeaa;
+}
+#ui-datepicker-div table.ui-datepicker-calendar td a {
+ display: block;
+ width: 100%;
+ text-align: center;
+}
+#ui-datepicker-div table.ui-datepicker-calendar td a.ui-state-highlight {
+ font-weight: bold;
+}
 #dialog-confirm {
  display: none;
 }

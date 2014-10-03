@@ -2,6 +2,7 @@
 @bg: #cccccc;
 @hl: #eeeeee;
 @ll: #aaaaaa;
+@selected: #eeeeaa;
 
 /* Reset */
 .reset {
@@ -196,6 +197,14 @@ div[aria-describedby=dialog-confirm] {
 		th {text-align: center;}
 		td {
 			background: @hl; text-align: center; border: solid 2px @bg; width: 32px;
+			&.ui-datepicker-unselectable {}
+			&.ui-datepicker-week-end {background: @ll;}
+			&.ui-datepicker-other-month {background: @bg;}
+			&.ui-datepicker-current-day {background: @selected;}
+			a {
+				display: block; width: 100%; text-align: center;
+				&.ui-state-highlight {font-weight: bold;}
+			}
 		}
 	}
 }
