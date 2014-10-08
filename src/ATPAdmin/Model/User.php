@@ -52,6 +52,11 @@ class User extends \ATP\ActiveRecord
 		return $this->username;
 	}
 	
+	public function preSavePassword($password)
+	{
+		return $this->_passwordHash;
+	}
+	
 	public function postLoadPassword($password)
 	{
 		$this->_passwordHash = $password;
