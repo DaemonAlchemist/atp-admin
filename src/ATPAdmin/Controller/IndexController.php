@@ -81,7 +81,7 @@ class IndexController extends \ATPCore\Controller\AbstractController
 		if(!\ATPAdmin\Model\User::hasUsers())
 		{
 			$this->_checkLogin = false;
-			$this->forward()->dispatch('default-admin', array('action' => 'edit', 'model' => 'admin_users'));
+			$this->forward()->dispatch('default-admin', array('action' => 'edit', 'model' => 'atpadmin_user'));
 		}
 		
 		if(count($_POST) > 0)

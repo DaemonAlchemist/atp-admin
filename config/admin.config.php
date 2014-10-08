@@ -7,7 +7,7 @@ return array(
 			'session_namespace' => 'atp_admin',
 		),
 		'models' => array(
-			'atpadmin_users' => array(
+			'atpadmin_user' => array(
 				'displayName' => 'Admin User',
 				'class' => 'ATPAdmin\Model\User',
 				'category' => 'Admin',
