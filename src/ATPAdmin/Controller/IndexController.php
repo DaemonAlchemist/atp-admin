@@ -161,6 +161,18 @@ class IndexController extends \ATPCore\Controller\AbstractController
 			try {
 				$object->setFrom($data);
 				$object->save();
+				
+				if(isset($this->modelData['postSaveListeners']))
+				{
+					foreach($this->modelData['postSaveListeners'] as $callback)
+					{
+						$class = $callback['class'];
+						$func = $callback['func'];
+						$callbackObj = new $class();
+						$callbackObj->$func($object);
+					}
+				}
+				
 				$this->flash->addSuccessMessage($this->modelType . " " . $object->identity() . " saved.");
 				$this->redirect()->toRoute('admin', array(
 					'action' => 'edit',
