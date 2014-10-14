@@ -259,6 +259,16 @@ p.success-message {
 .ui-tabs-vertical .ui-tabs-panel .mceStatusbar .mceResize {
  margin-top: 8px;
 }
+.accordion h3 {
+ display: block;
+ background: #cccccc;
+ padding: 8px;
+ margin: 4px;
+}
+.accordion div {
+ display: block;
+ width: 100%;
+}
 .section-header {
  background: #cccccc;
  padding: 8px;
