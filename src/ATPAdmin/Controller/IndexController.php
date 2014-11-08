@@ -173,14 +173,14 @@ class IndexController extends \ATPCore\Controller\AbstractController
 					}
 				}
 				
-				$this->flash->addSuccessMessage($this->modelType . " " . $object->identity() . " saved.");
+				$this->flash->addSuccessMessage($this->modelData['displayName'] . " " . $object->displayName() . " saved.");
 				$this->redirect()->toRoute('admin', array(
-					'action' => 'edit',
+					'action' => isset($_POST['save-and-edit']) ? 'edit' : 'list',
 					'model' => $this->modelType,
-					'id' => $object->id
+					'id' => isset($_POST['save-and-edit']) ? $object->id : null
 				));
 			} catch(\Exception $e) {
-				$this->flash->addErrorMessage("Error saving " . $this->modelType . " " . $object->identity() . ": " . $e->getMessage());
+				$this->flash->addErrorMessage("Error saving " . $this->modelData['displayName'] . " " . $object->displayName() . ": " . $e->getMessage());
 				$this->redirect()->toRoute('admin', array(
 					'action' => 'edit',
 					'model' => $this->modelType,
@@ -245,13 +245,13 @@ class IndexController extends \ATPCore\Controller\AbstractController
 		
 		try {
 			$object->delete();
-			$this->flash->addSuccessMessage($this->modelType . " " . $object->identity() . " deleted.");
+			$this->flash->addSuccessMessage($this->modelData['displayName'] . " " . $object->displayName() . " deleted.");
 			$this->redirect()->toRoute('admin', array(
 				'action' => 'list',
 				'model' => $this->modelType,
 			));
 		} catch(\Exception $e) {
-			$this->flash->addErrorMessage("Error deleting " . $this->modelType . " " . $object->identity() . ": " . $e->getMessage());
+			$this->flash->addErrorMessage("Error deleting " . $this->modelData['displayName'] . " " . $object->displayName() . ": " . $e->getMessage());
 			$this->redirect()->toRoute('admin', array(
 				'action' => 'list',
 				'model' => $this->modelType,

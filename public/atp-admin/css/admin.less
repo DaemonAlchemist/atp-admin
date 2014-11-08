@@ -46,9 +46,9 @@ a {
 	}
 	ul#admin-menu {
 		& > li {
-			float: left; .padded; width: 5em; text-align: center; position: relative; .highlight-link;
+			float: left; padding: 8px 16px; text-align: center; position: relative; .highlight-link;
 			& > ul {
-				position: absolute; top: 32px !important; left: 8px !important; .shadowed; z-index: 999;
+				position: absolute; top: 41px !important; left: 0px !important; .shadowed; z-index: 999;
 				border: solid @ll;
 				width: 10em;
 				background: @bg;
@@ -63,13 +63,30 @@ a {
 
 /* General page styles */
 h2 {width: 100%; .padded; background: @bg; border-bottom: solid 4px @ll;}
-body {background: @ll;}
+body {}
 
-input[type=submit] {width: 200px; text-align: center; font-weight: bold; border: solid @ll; float: right; margin-top: -4px;}
+input[type=submit] {
+	text-align: center; font-weight: bold;
+	border: solid @ll;
+	float: right;
+	margin-top: -4px;
+	margin-left: 8px;
+	padding: 0 8px;
+}
 
 p.success-message {
 	@successBG: #ccffcc;
 	@successTXT: #00aa00;
+	background: @successBG;
+	color: @successTXT;
+	border: dashed 2px @successTXT;
+	.padded;
+	position: absolute; top: 8px; left: 25%; right: 25%;
+}
+
+p.error-message {
+	@successBG: #ffcccc;
+	@successTXT: #aa0000;
 	background: @successBG;
 	color: @successTXT;
 	border: dashed 2px @successTXT;
