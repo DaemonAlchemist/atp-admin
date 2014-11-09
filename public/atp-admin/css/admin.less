@@ -94,6 +94,31 @@ p.error-message {
 	position: absolute; top: 8px; left: 25%; right: 25%;
 }
 
+ul.paginator {
+	float: right; margin-right: 8px;
+	li {
+		display: inline-block;
+		text-align: center;
+		font-weight: bold;
+		width: 2em;
+		height: 2em;
+		margin: 0.5em 0;
+		border: solid 4px @ll;
+		border-radius: 8px;
+		&.current-page {background: @bg;}
+		&.per-page {
+			border: none;
+			width: 12em;
+			span {display: inline-block; padding-top: 4px; font-weight: normal;}
+			select {
+				width: 4em;
+				height: 2em;
+				border: solid 2px @bg;
+			}
+		}
+	}
+}
+
 .ui-tabs-vertical {
 	
 	.ui-tabs-nav {

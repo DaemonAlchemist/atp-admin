@@ -5,6 +5,11 @@ $(function(){
 	});
 	//$('ul#admin-menu .ui-icon').remove();
 
+	//Paginator per page
+	$("ul.paginator li.per-page select").change(function(){
+		window.location.search = $(this).find("option:selected").data('url');
+	});
+	
 	//Confirm deletion
 	$('a.edit-link').button({
 		icons: {

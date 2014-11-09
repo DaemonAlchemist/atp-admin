@@ -113,13 +113,32 @@ class IndexController extends \ATPCore\Controller\AbstractController
 	{
 		$this->init();		
 		
+		//Get the paging information
+		$page = $this->params()->fromQuery('page', 1);
+		$perPageOptions = explode(",", $this->siteParam('admin-per-page-options'));
+		$perPage = $this->params()->fromQuery('per-page', $perPageOptions[0]);
+		$start = ($page - 1) * $perPage;
+
 		//Load the objects
 		$modelClass = $this->modelData['class'];
 		$obj = new $modelClass();
 		$objects = $obj->loadMultiple(array(
-			'orderBy' => $this->modelData['defaultOrder']
+			'orderBy' => $this->modelData['defaultOrder'],
+			'limit' => "{$start}, {$perPage}"
 		));
+		$objCount = $obj->getCount();
+		$pageCount = ceil($objCount / $perPage);
 		
+		//Add the paginator
+		$paginator = new \ATPCore\View\Widget\Paginator();
+		$paginator->setCurrentPage($page);
+		$paginator->setObjectCount($objCount);
+		$paginator->setPageCount($pageCount);
+		$paginator->setPerPage($perPage);
+		$paginator->setPerPageOptions($perPageOptions);
+		$this->view->addChild($paginator, 'paginator');
+
+		//Setup the view
 		$this->view->model = $this->modelType;
 		$this->view->modelData = $this->modelData;
 		$this->view->objects = $objects;

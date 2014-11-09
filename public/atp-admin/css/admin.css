@@ -162,6 +162,37 @@ p.error-message {
  left: 25%;
  right: 25%;
 }
+ul.paginator {
+ float: right;
+ margin-right: 8px;
+}
+ul.paginator li {
+ display: inline-block;
+ text-align: center;
+ font-weight: bold;
+ width: 2em;
+ height: 2em;
+ margin: 0.5em 0;
+ border: solid 4px #aaaaaa;
+ border-radius: 8px;
+}
+ul.paginator li.current-page {
+ background: #cccccc;
+}
+ul.paginator li.per-page {
+ border: none;
+ width: 12em;
+}
+ul.paginator li.per-page span {
+ display: inline-block;
+ padding-top: 4px;
+ font-weight: normal;
+}
+ul.paginator li.per-page select {
+ width: 4em;
+ height: 2em;
+ border: solid 2px #cccccc;
+}
 .ui-tabs-vertical .ui-tabs-nav {
  float: left;
  width: 10%;

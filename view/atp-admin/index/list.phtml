@@ -1,6 +1,10 @@
 <h2><?=$modelData['category']?> &gt; <?=\ATP\Inflector::pluralize($modelData['displayName'])?></h2>
 
+<?=$paginator?>
+
 <?=$this->partial('atp-admin/shared/model_list.phtml', array('objects' => $objects, 'model' => $model, 'modelData' => $modelData, 'delete' => true))?>
+
+<?=$paginator?>
 
 <div id="dialog-confirm" title="Deleting the <?=$model?>">
 	<p>
