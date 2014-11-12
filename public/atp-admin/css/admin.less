@@ -46,9 +46,9 @@ a {
 	}
 	ul#admin-menu {
 		& > li {
-			float: left; .padded; width: 5em; text-align: center; position: relative; .highlight-link;
+			float: left; padding: 8px 16px; text-align: center; position: relative; .highlight-link;
 			& > ul {
-				position: absolute; top: 32px !important; left: 8px !important; .shadowed; z-index: 999;
+				position: absolute; top: 41px !important; left: 0px !important; .shadowed; z-index: 999;
 				border: solid @ll;
 				width: 10em;
 				background: @bg;
@@ -63,9 +63,16 @@ a {
 
 /* General page styles */
 h2 {width: 100%; .padded; background: @bg; border-bottom: solid 4px @ll;}
-body {background: @ll;}
+body {}
 
-input[type=submit] {width: 200px; text-align: center; font-weight: bold; border: solid @ll; float: right; margin-top: -4px;}
+input[type=submit] {
+	text-align: center; font-weight: bold;
+	border: solid @ll;
+	float: right;
+	margin-top: -4px;
+	margin-left: 8px;
+	padding: 0 8px;
+}
 
 p.success-message {
 	@successBG: #ccffcc;
@@ -75,6 +82,41 @@ p.success-message {
 	border: dashed 2px @successTXT;
 	.padded;
 	position: absolute; top: 8px; left: 25%; right: 25%;
+}
+
+p.error-message {
+	@successBG: #ffcccc;
+	@successTXT: #aa0000;
+	background: @successBG;
+	color: @successTXT;
+	border: dashed 2px @successTXT;
+	.padded;
+	position: absolute; top: 8px; left: 25%; right: 25%;
+}
+
+ul.paginator {
+	float: right; margin-right: 8px;
+	li {
+		display: inline-block;
+		text-align: center;
+		font-weight: bold;
+		width: 2em;
+		height: 2em;
+		margin: 0.5em 0;
+		border: solid 4px @ll;
+		border-radius: 8px;
+		&.current-page {background: @bg;}
+		&.per-page {
+			border: none;
+			width: 12em;
+			span {display: inline-block; padding-top: 4px; font-weight: normal;}
+			select {
+				width: 4em;
+				height: 2em;
+				border: solid 2px @bg;
+			}
+		}
+	}
 }
 
 .ui-tabs-vertical {

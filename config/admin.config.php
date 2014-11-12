@@ -16,5 +16,16 @@ return array(
 			),
 		),
 		'reports' => array(),
+		'parameters' => array(
+			'admin-per-page-options' => array(
+				'displayName' => 'Per Page Options',
+				'group' => 'Admin',
+				'subGroup' => 'General',
+				'type' => 'Text',
+				'default' => '20,50,100',
+				'options' => array(
+				),
+			),
+		),
 	),
 );

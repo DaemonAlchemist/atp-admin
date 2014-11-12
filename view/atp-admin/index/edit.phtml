@@ -2,11 +2,12 @@
 	<h2>
 		Admin &gt; <a href="<?=$this->url('admin', array('action' => 'list', 'model' => $model))?>"><?=\ATP\Inflector::pluralize($modelData['displayName'])?></a> &gt;
 		<?php if($object->id) { ?>
-			Edit <?=$modelData['displayName']?> - <?=$object->displayName()?>
+			Editing <?=$modelData['displayName']?> - <?=$object->displayName()?>
 		<?php } else { ?>
-			Create New <?=$modelData['displayName']?>
+			Creating New <?=$modelData['displayName']?>
 		<?php } ?>
-		<input type="submit" class="model-save" name="submit" value="Save <?=$modelData['displayName']?>" />
+		<input type="submit" class="model-save" name="save-and-edit" value="Save and Continue Editing" />
+		<input type="submit" class="model-save" name="save" value="Save" />
 	</h2>
 
 	<div id="admin-tabs">

@@ -113,13 +113,32 @@ class IndexController extends \ATPCore\Controller\AbstractController
 	{
 		$this->init();		
 		
+		//Get the paging information
+		$page = $this->params()->fromQuery('page', 1);
+		$perPageOptions = explode(",", $this->siteParam('admin-per-page-options'));
+		$perPage = $this->params()->fromQuery('per-page', $perPageOptions[0]);
+		$start = ($page - 1) * $perPage;
+
 		//Load the objects
 		$modelClass = $this->modelData['class'];
 		$obj = new $modelClass();
 		$objects = $obj->loadMultiple(array(
-			'orderBy' => $this->modelData['defaultOrder']
+			'orderBy' => $this->modelData['defaultOrder'],
+			'limit' => "{$start}, {$perPage}"
 		));
+		$objCount = $obj->getCount();
+		$pageCount = ceil($objCount / $perPage);
 		
+		//Add the paginator
+		$paginator = new \ATPCore\View\Widget\Paginator();
+		$paginator->setCurrentPage($page);
+		$paginator->setObjectCount($objCount);
+		$paginator->setPageCount($pageCount);
+		$paginator->setPerPage($perPage);
+		$paginator->setPerPageOptions($perPageOptions);
+		$this->view->addChild($paginator, 'paginator');
+
+		//Setup the view
 		$this->view->model = $this->modelType;
 		$this->view->modelData = $this->modelData;
 		$this->view->objects = $objects;
@@ -173,14 +192,14 @@ class IndexController extends \ATPCore\Controller\AbstractController
 					}
 				}
 				
-				$this->flash->addSuccessMessage($this->modelType . " " . $object->identity() . " saved.");
+				$this->flash->addSuccessMessage($this->modelData['displayName'] . " " . $object->displayName() . " saved.");
 				$this->redirect()->toRoute('admin', array(
-					'action' => 'edit',
+					'action' => isset($_POST['save-and-edit']) ? 'edit' : 'list',
 					'model' => $this->modelType,
-					'id' => $object->id
+					'id' => isset($_POST['save-and-edit']) ? $object->id : null
 				));
 			} catch(\Exception $e) {
-				$this->flash->addErrorMessage("Error saving " . $this->modelType . " " . $object->identity() . ": " . $e->getMessage());
+				$this->flash->addErrorMessage("Error saving " . $this->modelData['displayName'] . " " . $object->displayName() . ": " . $e->getMessage());
 				$this->redirect()->toRoute('admin', array(
 					'action' => 'edit',
 					'model' => $this->modelType,
@@ -245,13 +264,13 @@ class IndexController extends \ATPCore\Controller\AbstractController
 		
 		try {
 			$object->delete();
-			$this->flash->addSuccessMessage($this->modelType . " " . $object->identity() . " deleted.");
+			$this->flash->addSuccessMessage($this->modelData['displayName'] . " " . $object->displayName() . " deleted.");
 			$this->redirect()->toRoute('admin', array(
 				'action' => 'list',
 				'model' => $this->modelType,
 			));
 		} catch(\Exception $e) {
-			$this->flash->addErrorMessage("Error deleting " . $this->modelType . " " . $object->identity() . ": " . $e->getMessage());
+			$this->flash->addErrorMessage("Error deleting " . $this->modelData['displayName'] . " " . $object->displayName() . ": " . $e->getMessage());
 			$this->redirect()->toRoute('admin', array(
 				'action' => 'list',
 				'model' => $this->modelType,

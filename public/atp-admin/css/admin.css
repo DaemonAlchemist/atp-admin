@@ -100,8 +100,7 @@ a {
 }
 #admin-header ul#admin-menu > li {
  float: left;
- padding: 8px;
- width: 5em;
+ padding: 8px 16px;
  text-align: center;
  position: relative;
 }
@@ -110,8 +109,8 @@ a {
 }
 #admin-header ul#admin-menu > li > ul {
  position: absolute;
- top: 32px !important;
- left: 8px !important;
+ top: 41px !important;
+ left: 0px !important;
  box-shadow: 4px 4px 8px;
  z-index: 999;
  border: solid #aaaaaa;
@@ -134,16 +133,14 @@ h2 {
  background: #cccccc;
  border-bottom: solid 4px #aaaaaa;
 }
-body {
- background: #aaaaaa;
-}
 input[type=submit] {
- width: 200px;
  text-align: center;
  font-weight: bold;
  border: solid #aaaaaa;
  float: right;
  margin-top: -4px;
+ margin-left: 8px;
+ padding: 0 8px;
 }
 p.success-message {
  background: #ccffcc;
@@ -154,6 +151,47 @@ p.success-message {
  top: 8px;
  left: 25%;
  right: 25%;
+}
+p.error-message {
+ background: #ffcccc;
+ color: #aa0000;
+ border: dashed 2px #aa0000;
+ padding: 8px;
+ position: absolute;
+ top: 8px;
+ left: 25%;
+ right: 25%;
+}
+ul.paginator {
+ float: right;
+ margin-right: 8px;
+}
+ul.paginator li {
+ display: inline-block;
+ text-align: center;
+ font-weight: bold;
+ width: 2em;
+ height: 2em;
+ margin: 0.5em 0;
+ border: solid 4px #aaaaaa;
+ border-radius: 8px;
+}
+ul.paginator li.current-page {
+ background: #cccccc;
+}
+ul.paginator li.per-page {
+ border: none;
+ width: 12em;
+}
+ul.paginator li.per-page span {
+ display: inline-block;
+ padding-top: 4px;
+ font-weight: normal;
+}
+ul.paginator li.per-page select {
+ width: 4em;
+ height: 2em;
+ border: solid 2px #cccccc;
 }
 .ui-tabs-vertical .ui-tabs-nav {
  float: left;
