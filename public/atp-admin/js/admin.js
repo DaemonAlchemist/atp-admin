@@ -83,5 +83,7 @@ $(function(){
 	});
 
 	$( "#admin-tabs" ).tabs().addClass( "ui-tabs-vertical");
-	$(".accordion").accordion();
+	$(".accordion").accordion({
+		collapsible: true
+	});
 });
