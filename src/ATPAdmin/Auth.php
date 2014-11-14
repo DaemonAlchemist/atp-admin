@@ -52,7 +52,7 @@ class Auth
 		return self::_getSession()->user;
 	}
 	
-	public static function logout($user)
+	public static function logout()
 	{
 		$session = self::_getSession();
 		unset($session->user);

@@ -102,6 +102,12 @@ class IndexController extends \ATPCore\Controller\AbstractController
 		return $this->view;
 	}
 	
+	public function logoutAction()
+	{
+		\ATPAdmin\Auth::logout();
+		$this->init();
+	}
+	
 	public function indexAction()
 	{
 		$this->init();
