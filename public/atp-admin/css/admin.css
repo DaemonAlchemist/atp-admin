@@ -181,7 +181,7 @@ ul.paginator li.current-page {
 }
 ul.paginator li.per-page {
  border: none;
- width: 12em;
+ width: auto;
 }
 ul.paginator li.per-page span {
  display: inline-block;
