@@ -364,6 +364,7 @@ table.admin-model-list tbody tr:nth-child(even) {
  background: #eeeeee;
 }
 div[aria-describedby=dialog-confirm] {
+ background: #ffffff;
  border-radius: 8px;
  box-shadow: 4px 4px 8px;
 }
