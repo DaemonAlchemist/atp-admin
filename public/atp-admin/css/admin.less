@@ -226,24 +226,37 @@ div[aria-describedby=dialog-confirm] {
 
 #ui-datepicker-div {
 	display: none;
-	.date-picker-nav {display: block; width: 10%; text-align: center; overflow: hidden; height: 24px; background: @hl;}
-	.ui-datepicker-prev {
-		float: left;
-		.date-picker-nav;
-		&:before {content: "< "}
+	background: @bg; .shadowed;
+	border: solid 4px @ll;
+	* {font-size: small;}
+	.date-picker-nav {display: block; width: 10%; text-align: center; overflow: hidden; height: 20px; background: @hl; margin: 0px 4px 4px 4px;}
+	.ui-datepicker-header {
+		background: @ll; text-align: center;
+		div.ui-datepicker-title {
+			display: inline-block;
+			select {height: 20px; width: 70px; margin: 0px 4px 4px 4px; display: inline-block;}
+		}
+		.ui-datepicker-prev {
+			float: left;
+			.date-picker-nav;
+			&:before {content: "< "}
+		}
+		.ui-datepicker-next{
+			float: right;
+			.date-picker-nav;
+			&:before {content: "> "}
+		}
 	}
-	.ui-datepicker-next{
-		float: right;
-		.date-picker-nav;
-		&:before {content: "> "}
-	}
-	.datepicker-button {background: @hl; border: solid 2px @bg; width: 64px; text-align: center;}
+	.datepicker-button {background: @hl; border: solid 2px @bg; width: 64px; text-align: center; margin: 4px;}
 	.ui-datepicker-current {.datepicker-button; float: left;}
 	.ui-datepicker-close{.datepicker-button; float: right;}
-	background: @bg; .shadowed; .padded;
-	select {width: 40%;}
 	table.ui-datepicker-calendar {
+		width: 100%;
+		padding-bottom: 4px;
+		border-bottom: dashed 2px @ll;
 		th {text-align: center;}
+		.ui-state-highlight, .ui-state-highlight *{font-weight: bold; border: solid 1px;} /* Today */
+		.ui-state-active, .ui-state-active *{font-weight: bold;} /* Selected date */
 		td {
 			background: @hl; text-align: center; border: solid 2px @bg; width: 32px;
 			&.ui-datepicker-unselectable {}
@@ -252,7 +265,6 @@ div[aria-describedby=dialog-confirm] {
 			&.ui-datepicker-current-day {background: @selected;}
 			a {
 				display: block; width: 100%; text-align: center;
-				&.ui-state-highlight {font-weight: bold;}
 			}
 		}
 	}
