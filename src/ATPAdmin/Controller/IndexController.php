@@ -84,7 +84,7 @@ class IndexController extends \ATPCore\Controller\AbstractController
 			$this->forward()->dispatch('default-admin', array('action' => 'edit', 'model' => 'atpadmin_user'));
 		}
 		
-		if(count($_POST) > 0)
+		if(count($_POST) > 0 && isset($_POST['username']))
 		{
 			$user = \ATPAdmin\Auth::authenticatedUser($_POST['username'], $_POST['password']);
 			if(!is_null($user))
