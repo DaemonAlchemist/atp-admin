@@ -28,12 +28,16 @@
 						<?php if($object->isOwnerField($column)) { ?>
 							<?php $table = $object->ownerTable($column) ;?>
 							<?php $ownerField = \ATP\Inflector::variablize(str_replace("_id", "", $column)); ?>
-							<?=$this->formModelSelect(array(
-								'label' => \ATP\Inflector::titleize($ownerField),
-								'name' => "modelData[{$column}]",
-								'className' => get_class($object->$ownerField),
-								'value' =>$object->$ownerField->id
-							))?>
+							<?=$this->formModelSelect(
+								array(
+									'label' => \ATP\Inflector::titleize($ownerField),
+									'name' => "modelData[{$column}]",
+									'value' =>$object->$ownerField->id,
+								),
+								array(
+									'className' => get_class($object->$ownerField),
+								)
+							)?>
 							<?php if($object->$ownerField->id) { ?>
 								<!--<a href="<?=$this->url('admin' ,array('action' => 'edit', 'model' => $column, 'id' =>$object->$ownerField->id))?>">Edit <?=$column?></a>-->
 							<?php } ?>
