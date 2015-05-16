@@ -40,7 +40,7 @@
 						<?php } else { ?>
 							<?php $columnData = $modelData['fields'][$column]?>
 							<?php $helper = "form{$columnData['type']}"?>
-							<?=$this->$helper(array('label' => $columnData['label'], 'name' => "modelData[{$column}]", 'value' => $object->$column))?>
+							<?=$this->$helper(array('label' => $columnData['label'], 'name' => "modelData[{$column}]", 'value' => $object->$column), $columnData['options'])?>
 							<?php if($object->isAFile($column) && !empty($object->$column->name)) { ?>
 								<a class="file-link" href="<?=$this->basePath($object->filePath($column))?>" target="blank">View File</a>
 							<?php } ?>

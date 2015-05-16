@@ -230,12 +230,21 @@ class IndexController extends \ATPCore\Controller\AbstractController
 				$type = "Text";
 				if(strpos($column, 'password') !== false)		$type = "Password";
 				elseif(strpos($columnType, "tinyint(1)") === 0)	$type = "Boolean";
+				elseif(strpos($columnType, "enum") === 0)		$type = "Enum";
 				elseif(strpos($column, 'html') !== false)		$type = "Html";
 				elseif(strpos($columnType, 'text') !== false)	$type = "Textarea";
 				elseif(strpos($column, '_file') !== false)		$type = "File";
 				elseif(strpos($columnType, 'date') !== false)	$type = "Date";
 				
 				$this->modelData['fields'][$column]['type'] = $type;
+				$this->modelData['fields'][$column]['options'] = array();
+				if($type == 'Enum')
+				{
+					$this->modelData['fields'][$column]['options'] = array_map(
+						function($option){return ucfirst(trim($option));},
+						explode(",", str_replace(array("enum", "(", ")", "'"), "", $columnType))
+					);
+				}
 			}
 		}
 		
