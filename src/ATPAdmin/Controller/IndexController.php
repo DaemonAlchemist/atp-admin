@@ -8,6 +8,8 @@ class IndexController extends \ATPCore\Controller\AbstractController
 
 	protected function init($checkLogin = true)
 	{
+        $this->noCache();
+
 		//Set password salt for user
 		\ATPAdmin\Model\User::setPasswordSalt($this->config('admin.auth.password_salt'));
 		
