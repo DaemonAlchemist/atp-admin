@@ -5,6 +5,7 @@ namespace ATPAdmin\Controller;
 class IndexController extends \ATPCore\Controller\AbstractController
 {
 	private $_checkLogin = true;
+    private $_validLogin = false;
 
 	protected function init($checkLogin = true)
 	{
@@ -14,11 +15,12 @@ class IndexController extends \ATPCore\Controller\AbstractController
 		\ATPAdmin\Model\User::setPasswordSalt($this->config('admin.auth.password_salt'));
 		
 		//Check for logged in user
-		if($checkLogin && $this->_checkLogin && !\ATPAdmin\Auth::isLoggedIn())
+        $this->_validLogin = !$checkLogin || !$this->_checkLogin || \ATPAdmin\Auth::isLoggedIn();
+		if(!$this->_validLogin)
 		{
 			$this->redirect()->toRoute('admin', array('action' => 'login'));
 		}
-	
+
 		//Set the admin layout
 		$this->layout("atp-admin/layout/admin");
 		
@@ -119,7 +121,8 @@ class IndexController extends \ATPCore\Controller\AbstractController
 	
 	public function listAction()
 	{
-		$this->init();		
+		$this->init();
+        if(!$this->_validLogin) return $this->view;
 		
 		//Get the paging information
 		$page = $this->params()->fromQuery('page', 1);
@@ -156,6 +159,7 @@ class IndexController extends \ATPCore\Controller\AbstractController
 	public function editAction()
 	{
 		$this->init();
+        if(!$this->_validLogin) return $this->view;
 		
 		//Load the object
 		$modelClass = $this->modelData['class'];
@@ -273,6 +277,7 @@ class IndexController extends \ATPCore\Controller\AbstractController
 	public function deleteAction()
 	{
 		$this->init();
+        if(!$this->_validLogin) return $this->view;
 		
 		//Load the object
 		$modelClass = $this->modelData['class'];
@@ -298,6 +303,7 @@ class IndexController extends \ATPCore\Controller\AbstractController
 	public function reportAction()
 	{
 		$this->init();
+        if(!$this->_validLogin) return $this->view;
 		
 		$report = $this->modelType;
 		$reportInfo = $this->config("admin.reports.{$report}");
